@@ -7,7 +7,8 @@ CSCI 2082 Group Project Information
 Step 1: (Due 09/06/2018 @11:30PM)
 Requirements: (Form a group of no more than three students (10%))
 
-Group members: 
+Group members:
+ 
 •	Alexander Reimer, Eric Thompson & Robert Gelly.
 
 ---------------------------------------------------------------------------------------
