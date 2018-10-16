@@ -31,11 +31,13 @@ Some of the features we would like to implement in this program are the followin
 
 •	Allow a student to enroll into school and have a student ID and email.
 
-•	Allow student to enroll/disenroll/modify classes
+•	Allow student to enroll/disenroll/modify/search classes
 
 •	Allow the student to see and get the required books/materials for classes they are enrolled in
 
-•	Allow student to get a file back with all information on up-coming schedule (Classes, times, teacher, room number, etc.)
+•	Allow student to get a TXT file back with all information on up-coming schedule (Classes, times, teacher, room number, etc.)
+
+• If a course is full, allow the student to add the course to a wish list.
 
 ---------------------------------------------------------------------------------------
 
