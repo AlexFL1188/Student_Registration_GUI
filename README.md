@@ -13,9 +13,12 @@ Group members:
 
 ---------------------------------------------------------------------------------------
 Step 2: (Due 09/25/2018 @11:30PM)
-Requirements: (Choose a project from the text book or propose your own project, must be approved by the instructor (10%))
+Requirements: 
+
+(Choose a project from the text book or propose your own project, must be approved by the instructor (10%))
 
 Group Project Idea: Student Class Enrollment System GUI
+
 •	The main idea of the program we would like to create is a program designed for class enrollment for a student. We would like to create something like the eservices site that we currently use to enroll in school but do so from a GUI and not an online interface. The program will allow the student to enroll, disenroll/modify their schedule as well as get course information (requirements, books, etc.)
 
 ---------------------------------------------------------------------------------------
