@@ -31,6 +31,7 @@ public class DriverGUI extends JFrame implements ActionListener{
 	private JTextField fullNameTXTField;
 	private JTextField birthDateTXTField;
 	private JTextField passwordTXTField;
+	private JTextField emailTXTField;
 	private JPanel contentPane;
 	private JTextArea outputArea;
 	
@@ -98,12 +99,51 @@ public class DriverGUI extends JFrame implements ActionListener{
 	public DriverGUI() {
 		//display welcome message
     	if(isStudent() == 0) {//if existing student
-    		//temp set to exit for building purposes
-    		System.exit(0);
-    	}else {//if new student create new JFrame for creating new student
     		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     		setExtendedState(JFrame.NORMAL); 
     		setBounds(500, 500, 500, 500);
+    		contentPane = new JPanel();
+    		contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
+    		setContentPane(contentPane);
+    		contentPane.setLayout(new GridLayout(5, 0));
+    		
+    		//label for email address
+    		JLabel emailLabel = new JLabel("Email Address:");
+    		contentPane.add(emailLabel);
+    		
+    		//email address input area
+    		emailTXTField = new JTextField();
+    		GridBagConstraints emailGrid = new GridBagConstraints();
+    		emailGrid.fill = GridBagConstraints.HORIZONTAL;
+    		emailGrid.insets = new Insets(0, 0, 5, 5);
+    		emailGrid.gridx = 1;
+    		emailGrid.gridy = 0;
+    		contentPane.add(emailTXTField, emailGrid);
+    		emailTXTField.setColumns(10);
+    		
+    		//label for password
+    		JLabel passwordLabel = new JLabel("Enter Password:");
+    		contentPane.add(passwordLabel);
+    		
+    		//password input area
+    		passwordTXTField = new JTextField();
+    		GridBagConstraints passwordGrid = new GridBagConstraints();
+    		passwordGrid.fill = GridBagConstraints.HORIZONTAL;
+    		passwordGrid.insets = new Insets(0, 0, 5, 5);
+    		passwordGrid.gridx = 1;
+    		passwordGrid.gridy = 0;
+    		contentPane.add(passwordTXTField, passwordGrid);
+    		passwordTXTField.setColumns(10);
+    		
+    		//button for student to login
+    		JButton btnLogin = new JButton("Login");
+    		btnLogin.addActionListener(this);
+    		contentPane.add(btnLogin);
+    		
+    	}else {//if new student create new JFrame for creating new student
+    		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    		setExtendedState(JFrame.NORMAL); 
+    		setBounds(800, 800, 800, 800);
     		contentPane = new JPanel();
     		contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
     		setContentPane(contentPane);
@@ -145,14 +185,14 @@ public class DriverGUI extends JFrame implements ActionListener{
     		JLabel passwordLabel = new JLabel("Create a Password:");
     		topPanel.add(passwordLabel);
     		
-    		//fullName text input area
+    		//password input area
     		passwordTXTField = new JTextField();
     		GridBagConstraints passwordGrid = new GridBagConstraints();
     		passwordGrid.fill = GridBagConstraints.HORIZONTAL;
     		passwordGrid.insets = new Insets(0, 0, 5, 5);
     		passwordGrid.gridx = 1;
     		passwordGrid.gridy = 0;
-    		topPanel.add(passwordTXTField, fullNameGrid);
+    		topPanel.add(passwordTXTField, passwordGrid);
     		passwordTXTField.setColumns(10);
     		
     		//button to register student
@@ -185,6 +225,9 @@ public class DriverGUI extends JFrame implements ActionListener{
 			} 
 			else if (nameOfCallingBtn.equals("Clear Console")) {
 				clearConsole();
+			}
+			else if (nameOfCallingBtn.equals("Login")) {
+				//needs work, needs to open instance of that student logging in.
 			}
 		}
 	
