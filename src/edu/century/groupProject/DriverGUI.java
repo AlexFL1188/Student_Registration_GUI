@@ -30,6 +30,7 @@ public class DriverGUI extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private JTextField fullNameTXTField;
 	private JTextField birthDateTXTField;
+	private JTextField passwordTXTField;
 	private JPanel contentPane;
 	private JTextArea outputArea;
 	
@@ -140,7 +141,21 @@ public class DriverGUI extends JFrame implements ActionListener{
     		topPanel.add(birthDateTXTField, birthDateGrid);
     		birthDateTXTField.setColumns(10);
     		
-    		//button to compute a user defined period of Pay Checks
+    		//label for password
+    		JLabel passwordLabel = new JLabel("Create a Password:");
+    		topPanel.add(passwordLabel);
+    		
+    		//fullName text input area
+    		passwordTXTField = new JTextField();
+    		GridBagConstraints passwordGrid = new GridBagConstraints();
+    		passwordGrid.fill = GridBagConstraints.HORIZONTAL;
+    		passwordGrid.insets = new Insets(0, 0, 5, 5);
+    		passwordGrid.gridx = 1;
+    		passwordGrid.gridy = 0;
+    		topPanel.add(passwordTXTField, fullNameGrid);
+    		passwordTXTField.setColumns(10);
+    		
+    		//button to register student
     		JButton btnRegister = new JButton("Register");
     		btnRegister.addActionListener(this);
     		topPanel.add(btnRegister);
@@ -162,10 +177,9 @@ public class DriverGUI extends JFrame implements ActionListener{
 			    try {
 					cal1.setTime(format.parse(birthDateTXTField.getText()));
 				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				Student s1 = new Student(fullNameTXTField.getText(), cal1);
+				Student s1 = new Student(fullNameTXTField.getText(), cal1, passwordTXTField.getText());
 				outputArea.append("Thank you for your Registration!!");
 				outputArea.append(s1.toString());
 			} 

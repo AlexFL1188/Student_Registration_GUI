@@ -11,6 +11,7 @@ public class Student {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String password;
 	private GregorianCalendar birthDate;
 	private CourseCollection courses;
 	/**
@@ -39,7 +40,7 @@ public class Student {
 	 * assigns and mutates values required to create the correct info for a required student object
 	 * Throws:
 	 */
-	public Student(String fullName, GregorianCalendar birthDate) {
+	public Student(String fullName, GregorianCalendar birthDate, String password) {
 		String[] name = fullName.split(" ");
 		this.firstName = name[0];
 		this.lastName = name[1];
@@ -49,6 +50,7 @@ public class Student {
 		String birthYear = Integer.toString(birthDate.get(Calendar.YEAR));
 		this.email = firstInitials + birthYear + lastInitials +"@my.century.edu";
 		this.studentId = firstInitials + birthYear + lastInitials;
+		this.password = password;
 		this.courses = null;
 	}
 
@@ -100,6 +102,14 @@ public class Student {
 	public void setBirthDate(GregorianCalendar birthDate) {
 		this.birthDate = birthDate;
 	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	/**
 	 * description:
 	 * clone method designed to create another pointer to the same object
@@ -146,4 +156,5 @@ public class Student {
 				birthDate.get(Calendar.YEAR) + "\nEmail: " + email;
 		return studentInfo;
 	}
+
 }
