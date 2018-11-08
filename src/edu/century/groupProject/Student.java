@@ -11,6 +11,7 @@ public class Student {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String password;
 	private GregorianCalendar birthDate;
 	private CourseCollection courses;
 	/**
@@ -39,22 +40,7 @@ public class Student {
 	 * assigns and mutates values required to create the correct info for a required student object
 	 * Throws:
 	 */
-	public Student(String fullName, GregorianCalendar birthDate) {
-		String[] name = fullName.split(" ");
-		this.firstName = name[0];
-		this.lastName = name[1];
-		this.birthDate = birthDate;
-	}
-	/**
-	 * description:
-	 * multi argument constructor designed to create a student object
-	 * Precondition:
-	 * takes in multi arguments
-	 * Postcondition:
-	 * assigns and mutates values required to create the correct info for a required student object
-	 * Throws:
-	 */
-	public Student(String fullName, GregorianCalendar birthDate, String email) {
+	public Student(String fullName, GregorianCalendar birthDate, String password) {
 		String[] name = fullName.split(" ");
 		this.firstName = name[0];
 		this.lastName = name[1];
@@ -62,32 +48,12 @@ public class Student {
 		String firstInitials = name[0].substring(0, 2);
 		String lastInitials = name[1].substring(0, 2);
 		String birthYear = Integer.toString(birthDate.get(Calendar.YEAR));
-		email = firstInitials + birthYear + lastInitials +"@my.century.edu";
-		this.email = email;
+		this.email = firstInitials + birthYear + lastInitials +"@my.century.edu";
+		this.studentId = firstInitials + birthYear + lastInitials;
+		this.password = password;
+		this.courses = null;
 	}
-	/**
-	 * description:
-	 * multi argument constructor designed to create a student object
-	 * Precondition:
-	 * takes in multi arguments
-	 * Postcondition:
-	 * assigns and mutates values required to create the correct info for a required student object
-	 * Throws:
-	 */
-	public Student(String id, String fullName, GregorianCalendar birthDate, String email, CourseCollection course) {
-		String[] name = fullName.split(" ");
-		this.firstName = name[0];
-		this.lastName = name[1];
-		this.birthDate = birthDate;
-		String firstInitials = name[0].substring(0, 2);
-		String lastInitials = name[1].substring(0, 2);
-		String birthYear = Integer.toString(birthDate.get(Calendar.YEAR));
-		email = firstInitials + birthYear + lastInitials +"@my.century.edu";
-		id = firstInitials + birthYear + lastInitials;
-		this.studentId = id;
-		this.email = email;
-		this.courses = course;
-	}
+
 	/**
 	 * description:
 	 * below are getters and setter required for getting and setting values associated
@@ -136,6 +102,14 @@ public class Student {
 	public void setBirthDate(GregorianCalendar birthDate) {
 		this.birthDate = birthDate;
 	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	/**
 	 * description:
 	 * clone method designed to create another pointer to the same object
@@ -179,7 +153,8 @@ public class Student {
 	public String toString() {
 		String studentInfo = "\nFull Name: " + firstName + " " + lastName + "\nBirth Date: " + 
 				birthDate.get(Calendar.MONTH)+"/"+birthDate.get(Calendar.DAY_OF_MONTH)+"/"+
-				birthDate.get(Calendar.YEAR) + "\nEmail: " + email + "\n" + courses;
+				birthDate.get(Calendar.YEAR) + "\nEmail: " + email;
 		return studentInfo;
 	}
+
 }

@@ -29,7 +29,7 @@ Requirements: (Meet with instructor to go over the project’s specifications an
 
 Some of the features we would like to implement in this program are the following:
 
-•	Allow a student to enroll into school and have a student ID and email.
+•	Allow a student to enroll into school and have a student ID/email and password.
 
 •	Allow student to enroll/disenroll/modify/search classes
 
