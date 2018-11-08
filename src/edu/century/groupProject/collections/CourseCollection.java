@@ -2,7 +2,7 @@ package edu.century.groupProject.collections;
 
 import edu.century.groupProject.Course;
 import edu.century.groupProject.CourseNode;
-
+//edit edit
 public class CourseCollection {
 	//creating instances within the CourseCollection class
 	private CourseNode head;
