@@ -1,29 +1,23 @@
 package edu.century.groupProject;
 
-import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
-
-import java.awt.CardLayout;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import java.awt.event.ActionListener;
 
-public class GUI extends JFrame {
+public class GUI extends JFrame implements ActionListener {
 
-	private JPanel contentPane;
+	private JFrame frame;
 	private JPanel newStudent;
 	private JPanel existingStudent;
 	private JPanel intro;
@@ -34,7 +28,6 @@ public class GUI extends JFrame {
 	private JTextField passwordTXTField;
 	private JTextArea outputArea;
 
-
 	/**
 	 * Launch the application.
 	 */
@@ -42,44 +35,59 @@ public class GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI frame = new GUI();
-					frame.setVisible(true);
+					GUI window = new GUI();
+					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
+
 	/**
-	 * Create the frame.
+	 * Create the application.
 	 */
 	public GUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 380);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new CardLayout(0, 0));
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 375);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new CardLayout(0,0));
 		
 		JPanel intro = new JPanel();
-		contentPane.add(intro, "introPanel");
+		frame.getContentPane().add(intro);
 		intro.setLayout(null);
+		intro.setVisible(false);
+		
+		JPanel newStudent = new JPanel();
+		frame.getContentPane().add(newStudent);
+		newStudent.setLayout(null);
+		newStudent.setVisible(true);
+		
+		JPanel existingStudent = new JPanel();
+		frame.getContentPane().add(existingStudent);
+		existingStudent.setLayout(null);
+		existingStudent.setVisible(false);
 		
 		JLabel lblPleaseSelectFrom = new JLabel("Please Select From the Following:");
 		lblPleaseSelectFrom.setBounds(77, 21, 316, 26);
 		intro.add(lblPleaseSelectFrom);
 		
 		JButton btnNewStudent = new JButton("NEW STUDENT");
+		btnNewStudent.addActionListener(this);
 		btnNewStudent.setBounds(117, 80, 175, 35);
 		intro.add(btnNewStudent);
 		
 		JButton btnExistingStudent = new JButton("EXISTING STUDENT");
+		btnExistingStudent.addActionListener(this);
 		btnExistingStudent.setBounds(91, 136, 232, 35);
 		intro.add(btnExistingStudent);
-		
-		JPanel newStudent = new JPanel();
-		contentPane.add(newStudent, "name_1807846974319900");
-		newStudent.setLayout(null);
 		
 		JLabel lblFullName = new JLabel("Full Name:");
 		lblFullName.setBounds(0, 63, 101, 26);
@@ -109,6 +117,7 @@ public class GUI extends JFrame {
 		newPasswordTXTField.setColumns(10);
 		
 		JButton btnRegister = new JButton("REGISTER");
+		btnRegister.addActionListener(this);
 		btnRegister.setBounds(135, 198, 141, 35);
 		newStudent.add(btnRegister);
 		
@@ -119,10 +128,6 @@ public class GUI extends JFrame {
 		JTextArea outputArea = new JTextArea();
 		outputArea.setBounds(0, 246, 414, 53);
 		newStudent.add(outputArea);
-		
-		JPanel existingStudent = new JPanel();
-		contentPane.add(existingStudent, "name_1807848647054400");
-		existingStudent.setLayout(null);
 		
 		JLabel lblPleaseLogin = new JLabel("Please Login");
 		lblPleaseLogin.setBounds(137, 21, 121, 26);
@@ -147,6 +152,7 @@ public class GUI extends JFrame {
 		passwordTXTField.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(this);
 		btnLogin.setBounds(129, 243, 141, 35);
 		existingStudent.add(btnLogin);
 	}
@@ -155,14 +161,13 @@ public class GUI extends JFrame {
 	public void actionPerformed(ActionEvent e) {
 		String nameOfCallingBtn = e.getActionCommand();
 		if(nameOfCallingBtn.equals("NEW STUDENT")) {
+			System.out.print("new student");
 			newStudent.setVisible(true);
 			intro.setVisible(false);
-			existingStudent.setVisible(false);
 		}
 		else if(nameOfCallingBtn.equals("EXISTING STUDENT")) {
-			newStudent.setVisible(false);
-			intro.setVisible(false);
 			existingStudent.setVisible(true);
+			intro.setVisible(false);
 		}
 		else if(nameOfCallingBtn.equals("REGISTER")) {
 			SimpleDateFormat format = new SimpleDateFormat("mm/DD/yyyy");
@@ -189,4 +194,8 @@ public class GUI extends JFrame {
 	private void clearConsole() {
 		outputArea.setText("");
 	}
+
+
 }
+
+
