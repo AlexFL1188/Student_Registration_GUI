@@ -7,8 +7,9 @@ public class Course {
 	private int credits;
 	private int courseNumber;
 	private int courseSection;
-	private String status;
+	private String coursetitle;
 	private String instructor;
+	private Materials materials;
 	/**
 	 * description:
 	 * null constructor for a object of type Course
@@ -24,8 +25,9 @@ public class Course {
 		this.credits = 0;
 		this.courseNumber = 0;
 		this.courseSection = 0;
-		this.status = null;
+		this.coursetitle = null;
 		this.instructor = null;
+		this.setMaterials(null);
 	}
 	/**
 	 * description:
@@ -36,14 +38,15 @@ public class Course {
 	 * assigns those arguments to create a object of type Course
 	 * Throws:
 	 */
-	public Course(int id, String subject, int credits, int courseNumber, int courseSection, String status, String instructor) {
+	public Course(int id, String subject, int credits, int courseNumber, int courseSection, String title, String instructor, Materials materials) {
 		this.id = id;
 		this.subject = subject;
 		this.credits = credits;
 		this.courseNumber = courseNumber;
 		this.courseSection = courseSection;
-		this.status = status;
+		this.coursetitle = title;
 		this.instructor = instructor;
+		this.setMaterials(materials);
 	}
 	/**
 	 * description:
@@ -94,16 +97,23 @@ public class Course {
 		this.courseSection = courseSection;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getCourseTitle() {
+		return coursetitle;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setCourseTitle(String status) {
+		this.coursetitle = status;
 	}
 
 	public String getInstructor() {
 		return instructor;
+	}
+	public Materials getMaterials() {
+		return materials;
+	}
+	
+	public void setMaterials(Materials materials) {
+		this.materials = materials;
 	}
 
 	public void setInstructor(String instructor) {
@@ -149,9 +159,11 @@ public class Course {
 	@Override
 	public String toString() {
 		String courseInfo = "\t-ID: " + id + " Subject: " + subject + " Credits: " + credits + " Course Number: "
-				+ courseNumber + " Course Section: " + courseSection + " Status: " + status + " Instructor: "
+				+ courseNumber + " Course Section: " + courseSection + " Title: " + coursetitle + " Instructor: "
 				+ instructor;
 		
 		return courseInfo;
 	}
+	
+	
 }
