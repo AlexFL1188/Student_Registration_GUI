@@ -15,8 +15,8 @@ import java.io.ObjectOutputStream;
 import java.util.GregorianCalendar;
 import edu.century.groupProject.collections.CourseCollection;
 import edu.century.groupProject.collections.StudentCollection;
-import edu.century.groupProject.Course;
 import edu.century.groupProject.Student;
+import edu.century.groupProject.ClassList;
 
 public class Driver {
 	/**
@@ -70,16 +70,10 @@ public class Driver {
 		
 		
 		//creating classes and adding to student 1
-		Course c1 = new Course(1000, "CSCI", 3, 2082, 1, "Open", "Zak", null);
-		courseCollection.add(c1);
-		Course c2 = new Course(2222, "MATH", 4, 1081, 1, "Pending", "Julie", null);
-		courseCollection.add(c2);
-		Course c3 = new Course(3111, "ENGL", 2, 1000, 1, "Open", "Tom", null);
-		courseCollection.add(c3);
-		Course c4 = new Course(4555, "ANTH", 3, 1021, 1, "Open", "John", null);
-		courseCollection.add(c4);
-		
+		courseCollection.add(ClassList.course1);
+		courseCollection.add(ClassList.course2);
 
+		
 		//write object to file serial
 		FileOutputStream fos = null;
         ObjectOutputStream out = null;
@@ -91,6 +85,7 @@ public class Driver {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        
         // read the object from file
         FileInputStream fis = null;
         ObjectInputStream in = null;

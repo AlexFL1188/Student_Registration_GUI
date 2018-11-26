@@ -1,8 +1,10 @@
 package edu.century.groupProject;
 
+import java.io.Serializable;
+
 //this class hold the materials need for a class
 //including if a lab is taken in accordance with the class
-public class Materials {
+public class Materials implements Serializable {
 	private String textBooks;
 	private String equipment;
 	private boolean needLab;
