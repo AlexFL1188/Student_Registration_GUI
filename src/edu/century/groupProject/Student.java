@@ -166,7 +166,7 @@ public class Student implements Serializable{
 	public String toString() {
 		String studentInfo = "\nFull Name: " + firstName + " " + lastName + "\nBirth Date: " + 
 				birthDate.get(Calendar.MONTH)+"/"+birthDate.get(Calendar.DAY_OF_MONTH)+"/"+
-				birthDate.get(Calendar.YEAR) + "\nEmail: " + email;
+				birthDate.get(Calendar.YEAR) + "\nEmail: " + email +"\n" + courses;
 		return studentInfo;
 	}
 

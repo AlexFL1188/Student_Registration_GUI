@@ -7,9 +7,13 @@ package edu.century.groupProject;
  *
  */
 public interface ClassList {
-	final Materials materials1 = new Materials("The Golden Compass");
-	public final Course course1 = new Course(001234, "ENGL", 4, 1020, 1, "Composistion 1", "Melanie Richards", materials1);
+	final Materials ENGL1020_Mat = new Materials("The Golden Compass");
+	public final Course ENGL1020 = new Course(001234, "ENGL", 4, 1020, 1, "Composistion 1", "Melanie Richards", ENGL1020_Mat);
 	
-	final Materials materials2 = new Materials("Intro to Programing");
-	public final Course course2 = new Course(000723, "CSCI", 4, 1081, 1, "Introduction to Programming", "Zak Banni", materials2);
+	final Materials CSCI1081_Mat = new Materials("Intro to Programing");
+	public final Course CSCI1081 = new Course(000723, "CSCI", 4, 1081, 1, "Introduction to Programming", "Zak Banni", CSCI1081_Mat);
+
+	final Materials CSCI2061_Mat = new Materials("Fundamentals of Python");
+	public final Course CSCI2061 = new Course(001234, "CSCI", 2, 2081, 2, "Python For Programmers", "Robert Nienman", CSCI2061_Mat);
+	
 }

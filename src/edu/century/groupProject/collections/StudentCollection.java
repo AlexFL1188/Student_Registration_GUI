@@ -15,10 +15,10 @@ public class StudentCollection implements Serializable {
 	
 	/**
 	 * description:
-	 * null constructor for a CourseCollection
+	 * null constructor for a StudentCollection
 	 * Precondition:
 	 * Postcondition:
-	 * all instance within the CourseCollection are set to a null or 0 state
+	 * all instance within the StudentCollection are set to a null or 0 state
 	 * Throws:
 	 */
 	public StudentCollection() {
@@ -28,11 +28,11 @@ public class StudentCollection implements Serializable {
 	}
 	/**
 	 * description:
-	 * void method made to add a Course object to the CourseCollection
+	 * void method made to add a Student object to the StudentCollection
 	 * Precondition:
-	 * the method takes in a Course object or Course
+	 * the method takes in a Student object or Student
 	 * Postcondition:
-	 * the course is added to the head of linklist
+	 * the student is added to the head of linklist
 	 * Throws:
 	 */
 	public void add(Student element) {
@@ -51,11 +51,11 @@ public class StudentCollection implements Serializable {
 	}
 	/**
 	 * description:
-	 * void method created to remove a selected course from a CourseCollection
+	 * void method created to remove a selected student from a StudentCollection
 	 * Precondition:
-	 * method takes in a Course object or course to search for
+	 * method takes in a Student object or student to search for
 	 * Postcondition:
-	 * if the course is found within the CourseCollection then its removed and the linklist is fixed
+	 * if the student is found within the StudentCollection then its removed and the linklist is fixed
 	 * Throws:
 	 */
 	public void remove(Student target) {
