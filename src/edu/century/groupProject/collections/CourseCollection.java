@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import edu.century.groupProject.Course;
 import edu.century.groupProject.CourseNode;
-//edit edit
 public class CourseCollection implements Serializable {
 	/**
 	 * 

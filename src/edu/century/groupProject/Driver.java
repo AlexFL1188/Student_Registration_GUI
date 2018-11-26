@@ -55,12 +55,42 @@ public class Driver {
 			System.out.println("The Student Doesn't Exist!!\n");
 		}
 	}
-	public static <S> void writeToFile(S input) {
+	public static <S> void writeStudents(S input) {
 		//write object to file serial
 		FileOutputStream fos = null;
         ObjectOutputStream out = null;
         try {
-            fos = new FileOutputStream("Courses.txt");
+            fos = new FileOutputStream("Students.bin");
+            out = new ObjectOutputStream(fos);
+            out.writeObject(input);
+            out.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+	}
+	
+	public static <S> Object readStudents(){
+        // read the object from file
+        FileInputStream fis = null;
+        ObjectInputStream in = null;
+		StudentCollection output = new StudentCollection();
+
+        try {
+            fis = new FileInputStream("Students.bin");
+            in = new ObjectInputStream(fis);
+            output = (StudentCollection) in.readObject();
+            in.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return output;
+	}
+	public static <S> void writeCourses(S input) {
+		//write object to file serial
+		FileOutputStream fos = null;
+        ObjectOutputStream out = null;
+        try {
+            fos = new FileOutputStream("Courses.bin");
             out = new ObjectOutputStream(fos);
             out.writeObject(input);
             out.close();
@@ -76,7 +106,7 @@ public class Driver {
 		CourseCollection output = new CourseCollection();
 
         try {
-            fis = new FileInputStream("Courses.txt");
+            fis = new FileInputStream("Courses.bin");
             in = new ObjectInputStream(fis);
             output = (CourseCollection) in.readObject();
             in.close();
@@ -93,17 +123,19 @@ public class Driver {
 		
 		//creating a instance of a student
 		Student s1 = new Student("Alex Reimer", new GregorianCalendar(1990, 07, 11),"test", null);
-		stmp.addStudent(s1);
+		stmp.add(s1);
 		//creating another student and adding classes
 		Student s2 = new Student("John Davis", new GregorianCalendar(2000, 01, 17), "temp", null);
-		stmp.addStudent(s2);
+		stmp.add(s2);
 		
 		
 		//creating classes and adding to student 1
 		courseCollection.add(ClassList.course1);
 		courseCollection.add(ClassList.course2);
 
-		writeToFile(courseCollection);
+		writeCourses(courseCollection);
+		writeStudents(stmp);
+        System.out.println(readStudents());
         System.out.println(readCourses());
 	}
 }
