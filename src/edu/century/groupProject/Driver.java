@@ -55,10 +55,39 @@ public class Driver {
 			System.out.println("The Student Doesn't Exist!!\n");
 		}
 	}
+	public static <S> void writeToFile(S input) {
+		//write object to file serial
+		FileOutputStream fos = null;
+        ObjectOutputStream out = null;
+        try {
+            fos = new FileOutputStream("Courses.txt");
+            out = new ObjectOutputStream(fos);
+            out.writeObject(input);
+            out.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+	}
+	
+	public static <S> Object readCourses(){
+        // read the object from file
+        FileInputStream fis = null;
+        ObjectInputStream in = null;
+		CourseCollection output = new CourseCollection();
+
+        try {
+            fis = new FileInputStream("Courses.txt");
+            in = new ObjectInputStream(fis);
+            output = (CourseCollection) in.readObject();
+            in.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return output;
+	}
 	
 	public static void main(String[] args) {
 		CourseCollection courseCollection = new CourseCollection();
-		CourseCollection test = new CourseCollection();
 		//creating instance of a collection of students
 		StudentCollection stmp = new StudentCollection();
 		
@@ -74,30 +103,7 @@ public class Driver {
 		courseCollection.add(ClassList.course1);
 		courseCollection.add(ClassList.course2);
 
-		
-		//write object to file serial
-		FileOutputStream fos = null;
-        ObjectOutputStream out = null;
-        try {
-            fos = new FileOutputStream("Courses.txt");
-            out = new ObjectOutputStream(fos);
-            out.writeObject(courseCollection);
-            out.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        
-        // read the object from file
-        FileInputStream fis = null;
-        ObjectInputStream in = null;
-        try {
-            fis = new FileInputStream("Courses.txt");
-            in = new ObjectInputStream(fis);
-            test = (CourseCollection) in.readObject();
-            in.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        System.out.println(test);
+		writeToFile(courseCollection);
+        System.out.println(readCourses());
 	}
 }
