@@ -1,11 +1,16 @@
 package edu.century.groupProject;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import edu.century.groupProject.collections.CourseCollection;
 
-public class Student {
+public class Student implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//creating instances of a student object
 	private String studentId;
 	private String firstName;

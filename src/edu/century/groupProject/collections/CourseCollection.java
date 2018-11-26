@@ -1,9 +1,15 @@
 package edu.century.groupProject.collections;
 
+import java.io.Serializable;
+
 import edu.century.groupProject.Course;
 import edu.century.groupProject.CourseNode;
 //edit edit
-public class CourseCollection {
+public class CourseCollection implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//creating instances within the CourseCollection class
 	private CourseNode head;
 	private CourseNode tail;

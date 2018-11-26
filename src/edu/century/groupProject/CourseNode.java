@@ -1,6 +1,12 @@
 package edu.century.groupProject;
 
-public class CourseNode {
+import java.io.Serializable;
+
+public class CourseNode implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//creating instances of a course node
 	private Course data;
 	private CourseNode link;

@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import java.awt.FlowLayout;
 
 public class GUI extends JFrame implements ActionListener {
 
@@ -58,20 +59,20 @@ public class GUI extends JFrame implements ActionListener {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 375);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new CardLayout(0,0));
+		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
 		JPanel intro = new JPanel();
-		frame.getContentPane().add(intro);
+		frame.getContentPane().add(intro, "name_1824609994943200");
 		intro.setLayout(null);
-		intro.setVisible(false);
+		intro.setVisible(true);
 		
 		JPanel newStudent = new JPanel();
-		frame.getContentPane().add(newStudent);
+		frame.getContentPane().add(newStudent, "name_1824610007818800");
 		newStudent.setLayout(null);
-		newStudent.setVisible(true);
+		newStudent.setVisible(false);
 		
 		JPanel existingStudent = new JPanel();
-		frame.getContentPane().add(existingStudent);
+		frame.getContentPane().add(existingStudent, "name_1824610020971200");
 		existingStudent.setLayout(null);
 		existingStudent.setVisible(false);
 		
@@ -161,7 +162,6 @@ public class GUI extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String nameOfCallingBtn = e.getActionCommand();
 		if(nameOfCallingBtn.equals("NEW STUDENT")) {
-			System.out.print("new student");
 			newStudent.setVisible(true);
 			intro.setVisible(false);
 		}
