@@ -1,124 +1,92 @@
 package edu.century.groupProject.collections;
 
-import edu.century.groupProject.Student;
+import java.io.Serializable;
 
-public class StudentCollection {
-	//creating instances of a studentCollection
-	private Student student[];
+import edu.century.groupProject.Student;
+import edu.century.groupProject.StudentNode;
+public class StudentCollection implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private StudentNode head;
+	private StudentNode tail;
 	private int numberOfStudents;
 	
 	/**
 	 * description:
-	 * method for default construction
+	 * null constructor for a CourseCollection
 	 * Precondition:
 	 * Postcondition:
+	 * all instance within the CourseCollection are set to a null or 0 state
 	 * Throws:
 	 */
 	public StudentCollection() {
-		this.student = new Student[0];
+		this.head = null;
+		this.tail = null;
 		this.numberOfStudents = 0;
 	}
 	/**
 	 * description:
-	 * method for default construction to create a Student array of size
+	 * void method made to add a Course object to the CourseCollection
 	 * Precondition:
-	 * takes in an int value of size
+	 * the method takes in a Course object or Course
 	 * Postcondition:
+	 * the course is added to the head of linklist
 	 * Throws:
 	 */
-	public StudentCollection(int size) {
-		this.student = new Student[size];
-		this.numberOfStudents = 0;
-	}
-	/**
-	 * description:
-	 * void method to add a Student object to a StudentCollection
-	 * Precondition:
-	 * takes in a Student object called student
-	 * Postcondition:
-	 * student object is added to an array inside of a StudentCollection
-	 * Throws:
-	 */
-	public void addStudent(Student students) {
-		if(numberOfStudents == student.length) {
-			ensureCapacity(numberOfStudents);
-		}
-		student[numberOfStudents] = students;
-		numberOfStudents++;
-	}
-	/**
-	 * description:
-	 * boolean method to remove a student object from a StudentCollection
-	 * Precondition:
-	 * takes in an object of Student to remove from the StudentCollection array
-	 * Postcondition:
-	 * after executed depending on if statement, student object maybe removed
-	 * Throws:
-	 */
-	public boolean removeStudent(Student students) {
-		int index = 0;
-		while((index < numberOfStudents) && (students != student[index])) {
-			index++;
-		}
-		if(index == numberOfStudents)
-			return false;
-		else {
-			numberOfStudents--;
-			student[index] = student[numberOfStudents];
-			return true;
+	public void add(Student element) {
+		if(head == null) {
+			head = new StudentNode(element);
+			numberOfStudents++;
+		}else {
+			StudentNode tmp = new StudentNode(element);
+			tmp.setLink(head);
+			head = tmp;
+			if(numberOfStudents == 0) {
+				tail = head;
+			}
+			numberOfStudents++;
 		}
 	}
 	/**
 	 * description:
-	 * void method to ensure the capacity of the StudentCollection array is large enough to
-	 * Accommodate the incoming student objects
+	 * void method created to remove a selected course from a CourseCollection
 	 * Precondition:
-	 * takes in an int value size, which is the current size of the array
+	 * method takes in a Course object or course to search for
 	 * Postcondition:
-	 * after execution the array is increased by two times it size plus 1
+	 * if the course is found within the CourseCollection then its removed and the linklist is fixed
 	 * Throws:
 	 */
-	public void ensureCapacity(int size) {
-		int newSize = size *2 + 1;
-		Student[] biggerArray = new Student[newSize];
-		System.arraycopy(student, 0, biggerArray, 0, student.length);
-		student = biggerArray;
-	}
-	/**
-	 * description:
-	 * boolean method to search for the lastName within a student object
-	 * Precondition:
-	 * the method takes in a string of a lastName to search for
-	 * Postcondition:
-	 * after the execution the method returns a true or false if the lastName exists
-	 * Throws:
-	 */
-	public boolean searchLastName(String target) {
-		for(int i = 0; i < numberOfStudents; i++) {
-			if(target.equals(student[i].getLastName())) {
-				return true;
+	public void remove(Student target) {
+		if(numberOfStudents == 0)
+			return;
+		StudentNode cursor, precursor;
+		for(cursor = head, precursor = null; cursor!=null; precursor = cursor, cursor = cursor.getLink()) {
+			if (target.equals(cursor.getData()) && cursor == head) {
+				if (numberOfStudents == 1) {
+					head = null;
+					tail = null;
+				} else {
+					head = head.getLink();
+				}
+				numberOfStudents--;
+			} else if (target.equals(cursor.getData()) && cursor == tail) {
+				if (numberOfStudents == 1) {
+					head = null;
+					tail = null;
+				} else {
+					precursor.setLink(null);
+					tail = precursor;
+				}
+				numberOfStudents--;
+			} else if (target.equals(cursor.getData())) {
+				precursor.setLink(cursor.getLink());
+				numberOfStudents--;
 			}
 		}
-		return false;
 	}
-	/**
-	 * description:
-	 * boolean method to search for a student Id within a student object
-	 * Precondition:
-	 * the method takes in a string of a student Id
-	 * Postcondition:
-	 * after execution the method returns a true or false if the Student Id is equal to id within a
-	 * student object
-	 * Throws:
-	 */
-	public boolean searchId(String target) {
-		for(int i = 0; i < numberOfStudents; i++) {
-			if(target.equals(student[i].getStudentId())) {
-				return true;
-			}
-		}
-		return false;
-	}
+
 	/**
 	 * description:
 	 * method that returns a string, made to convert values to a string
@@ -130,10 +98,12 @@ public class StudentCollection {
 	 */
 	@Override
 	public String toString() {
-		String studentInfo = "Number of Students: " + numberOfStudents +"\n";
-		for(int i = 0; i < numberOfStudents; i++) {
-			studentInfo+= "Student#"+(i+1)+""+ student[i] + "\n";
+		
+		StudentNode cursor = head;
+		String info = "Number of Students: " + numberOfStudents +"\n" + "Students: \n";
+		for (cursor = head; cursor != null; cursor = cursor.getLink()) {
+			info += cursor.getData() + "\n";
 		}
-		return studentInfo;
+		return info;
 	}
 }
