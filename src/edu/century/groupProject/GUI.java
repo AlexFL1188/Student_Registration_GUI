@@ -14,10 +14,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import java.awt.FlowLayout;
 
 public class GUI extends JFrame implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JFrame frame;
 	private JPanel newStudent;
 	private JPanel existingStudent;
@@ -177,7 +180,7 @@ public class GUI extends JFrame implements ActionListener {
 			} catch (ParseException e1) {
 				e1.printStackTrace();
 			}
-			Student s1 = new Student(fullNameTXTField.getText(), cal1, passwordTXTField.getText());
+			Student s1 = new Student(fullNameTXTField.getText(), cal1, passwordTXTField.getText(), null);
 			outputArea.append("Thank you for your Registration!!");
 			outputArea.append(s1.toString());
 		} 

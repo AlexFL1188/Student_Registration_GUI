@@ -61,11 +61,12 @@ public class Driver {
 		CourseCollection test = new CourseCollection();
 		//creating instance of a collection of students
 		StudentCollection stmp = new StudentCollection();
+		
 		//creating a instance of a student
-		Student s1 = new Student("Alex Reimer", new GregorianCalendar(1990, 07, 11),"");
+		Student s1 = new Student("Alex Reimer", new GregorianCalendar(1990, 07, 11),"test", null);
 		stmp.addStudent(s1);
 		//creating another student and adding classes
-		Student s2 = new Student("John Davis", new GregorianCalendar(2000, 01, 17), "temp");
+		Student s2 = new Student("John Davis", new GregorianCalendar(2000, 01, 17), "temp", null);
 		stmp.addStudent(s2);
 		
 		

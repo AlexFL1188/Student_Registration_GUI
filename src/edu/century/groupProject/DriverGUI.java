@@ -232,7 +232,7 @@ public class DriverGUI extends JFrame implements ActionListener{
 			} catch (ParseException e1) {
 				e1.printStackTrace();
 			}
-			Student s1 = new Student(fullNameTXTField.getText(), cal1, passwordTXTField.getText());
+			Student s1 = new Student(fullNameTXTField.getText(), cal1, passwordTXTField.getText(), null);
 			outputArea.append("Thank you for your Registration!!");
 			outputArea.append(s1.toString());
 		} 

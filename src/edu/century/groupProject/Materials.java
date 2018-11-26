@@ -5,6 +5,10 @@ import java.io.Serializable;
 //this class hold the materials need for a class
 //including if a lab is taken in accordance with the class
 public class Materials implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String textBooks;
 	private String equipment;
 	private boolean needLab;

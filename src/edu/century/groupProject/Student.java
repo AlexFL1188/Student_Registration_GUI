@@ -45,7 +45,7 @@ public class Student implements Serializable{
 	 * assigns and mutates values required to create the correct info for a required student object
 	 * Throws:
 	 */
-	public Student(String fullName, GregorianCalendar birthDate, String password) {
+	public Student(String fullName, GregorianCalendar birthDate, String password, CourseCollection courses) {
 		String[] name = fullName.split(" ");
 		this.firstName = name[0];
 		this.lastName = name[1];
@@ -56,7 +56,7 @@ public class Student implements Serializable{
 		this.email = firstInitials + birthYear + lastInitials +"@my.century.edu";
 		this.studentId = firstInitials + birthYear + lastInitials;
 		this.password = password;
-		this.courses = null;
+		this.courses = courses;
 	}
 
 	/**
@@ -114,6 +114,14 @@ public class Student implements Serializable{
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public CourseCollection getCourses() {
+		return courses;
+	}
+	
+	public void setCourses(CourseCollection courses) {
+		this.courses = courses;
 	}
 	/**
 	 * description:
