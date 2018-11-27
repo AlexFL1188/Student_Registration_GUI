@@ -63,6 +63,7 @@ public class Driver {
             fos = new FileOutputStream("Students.bin");
             out = new ObjectOutputStream(fos);
             out.writeObject(input);
+            out.flush();
             out.close();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -90,9 +91,8 @@ public class Driver {
 		CourseCollection courseCollection = new CourseCollection();
 		//creating instance of a collection of students
 		StudentCollection stmp = new StudentCollection();
-		
 		//creating a instance of a student
-		Student s1 = new Student("Alex Reimer", new GregorianCalendar(1990, 07, 11),"test", courseCollection);
+		Student s1 = new Student("Alexander Reimer", new GregorianCalendar(1990, 07, 11),"test", courseCollection);
 		stmp.add(s1);
 				
 		//creating classes and adding to student 1

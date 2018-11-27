@@ -4,6 +4,10 @@ import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
@@ -14,6 +18,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import edu.century.groupProject.collections.CourseCollection;
+import edu.century.groupProject.collections.StudentCollection;
+import edu.century.groupProject.Student;
+import edu.century.groupProject.ClassList;
 
 public class GUI extends JFrame implements ActionListener {
 
@@ -58,23 +67,23 @@ public class GUI extends JFrame implements ActionListener {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 375);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
-		JPanel intro = new JPanel();
+		intro = new JPanel();
 		frame.getContentPane().add(intro, "name_1824609994943200");
 		intro.setLayout(null);
 		intro.setVisible(true);
 		
-		JPanel newStudent = new JPanel();
+		newStudent = new JPanel();
 		frame.getContentPane().add(newStudent, "name_1824610007818800");
 		newStudent.setLayout(null);
 		newStudent.setVisible(false);
 		
-		JPanel existingStudent = new JPanel();
+		existingStudent = new JPanel();
 		frame.getContentPane().add(existingStudent, "name_1824610020971200");
 		existingStudent.setLayout(null);
 		existingStudent.setVisible(false);
@@ -120,7 +129,7 @@ public class GUI extends JFrame implements ActionListener {
 		newStudent.add(newPasswordTXTField);
 		newPasswordTXTField.setColumns(10);
 		
-		JButton btnRegister = new JButton("REGISTER");
+		JButton btnRegister = new JButton("Register");
 		btnRegister.addActionListener(this);
 		btnRegister.setBounds(135, 198, 141, 35);
 		newStudent.add(btnRegister);
@@ -172,7 +181,7 @@ public class GUI extends JFrame implements ActionListener {
 			existingStudent.setVisible(true);
 			intro.setVisible(false);
 		}
-		else if(nameOfCallingBtn.equals("REGISTER")) {
+		else if(nameOfCallingBtn.equals("Register")) {
 			SimpleDateFormat format = new SimpleDateFormat("mm/DD/yyyy");
 			GregorianCalendar cal1 = new GregorianCalendar();
 			try {
@@ -194,8 +203,39 @@ public class GUI extends JFrame implements ActionListener {
 	}
 	
 	//method to clear text output field
-	private void clearConsole() {
+	public void clearConsole() {
 		outputArea.setText("");
+	}
+	public static <S> void writeStudents(S input) {
+		//write object to file serial
+		FileOutputStream fos = null;
+        ObjectOutputStream out = null;
+        try {
+            fos = new FileOutputStream("Students.bin");
+            out = new ObjectOutputStream(fos);
+            out.writeObject(input);
+            out.flush();
+            out.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+	}
+	
+	public static <S> Object readStudents(){
+        // read the object from file
+        FileInputStream fis = null;
+        ObjectInputStream in = null;
+		StudentCollection output = new StudentCollection();
+
+        try {
+            fis = new FileInputStream("Students.bin");
+            in = new ObjectInputStream(fis);
+            output = (StudentCollection) in.readObject();
+            in.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return output;
 	}
 
 
