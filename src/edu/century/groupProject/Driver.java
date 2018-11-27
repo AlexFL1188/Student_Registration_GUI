@@ -60,6 +60,20 @@ public class Driver {
 		FileOutputStream fos = null;
         ObjectOutputStream out = null;
         try {
+            fos = new FileOutputStream("Students.bin", true);
+            out = new ObjectOutputStream(fos);
+            out.writeObject(input);
+            out.flush();
+            out.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+	}
+	public static <S> void appendStudents(S input) {
+		//write object to file serial
+		FileOutputStream fos = null;
+        ObjectOutputStream out = null;
+        try {
             fos = new FileOutputStream("Students.bin");
             out = new ObjectOutputStream(fos);
             out.writeObject(input);
@@ -104,8 +118,15 @@ public class Driver {
 		Student s2 = new Student("John Davis", new GregorianCalendar(2000, 01, 17), "temp", null);
 		stmp.add(s2);
 
-		
+
 		writeStudents(stmp);
         System.out.println(readStudents());
+        
+		Student s3 = new Student("bob Davis", new GregorianCalendar(2000, 01, 17), "temp", null);
+		stmp.add(s3);
+		
+		appendStudents(stmp);
+        System.out.println(readStudents());
+
 	}
 }

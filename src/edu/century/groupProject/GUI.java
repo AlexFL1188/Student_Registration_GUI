@@ -138,7 +138,7 @@ public class GUI extends JFrame implements ActionListener {
 		lblEnterTheFollowing.setBounds(57, 10, 315, 32);
 		newStudent.add(lblEnterTheFollowing);
 		
-		JTextArea outputArea = new JTextArea();
+		outputArea = new JTextArea();
 		outputArea.setBounds(0, 246, 414, 53);
 		newStudent.add(outputArea);
 		
