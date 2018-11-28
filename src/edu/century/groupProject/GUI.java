@@ -8,10 +8,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -195,18 +191,11 @@ public class GUI extends JFrame implements ActionListener {
 			intro.setVisible(false);
 		}
 		else if(nameOfCallingBtn.equals("Register")) {
-			DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-			Calendar cal1 = Calendar.getInstance();
-			try {
-				cal1.setTime(format.parse(birthDateTXTField.getText()));
-				cal1.set(Calendar.MONTH, cal1.get(Calendar.MONTH) + 1);
-			} catch (ParseException e1) {
-				e1.printStackTrace();
-			}
-			s1 = new Student(fullNameTXTField.getText(), cal1, passwordTXTField.getText(), null);
+			s1 = new Student(fullNameTXTField.getText(),birthDateTXTField.getText() , passwordTXTField.getText(), null);
 			sC.add(s1);
 			appendStudents(sC);
 			outputArea.append("Thank you for your Registration!!");
+			outputArea.append(sC.toString());
 			btnRegister.setEnabled(false);
 			newRegOptions();
 		} 

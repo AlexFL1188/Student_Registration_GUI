@@ -2,6 +2,7 @@ package edu.century.groupProject;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import edu.century.groupProject.collections.CourseCollection;
 
@@ -16,7 +17,10 @@ public class Student implements Serializable{
 	private String lastName;
 	private String email;
 	private String password;
-	private Calendar birthDate;
+	private String birthDate;
+	private String birthMonth;
+	private String birthDay;
+	private String birthYear;
 	private CourseCollection courses;
 	/**
 	 * description:
@@ -44,18 +48,25 @@ public class Student implements Serializable{
 	 * assigns and mutates values required to create the correct info for a required student object
 	 * Throws:
 	 */
-	public Student(String fullName, Calendar birthDate, String password, CourseCollection courses) {
+	public Student(String fullName, String birthDate, String password, CourseCollection courses) {
 		String[] name = fullName.split(" ");
 		this.firstName = name[0];
 		this.lastName = name[1];
-		this.birthDate = birthDate;
 		String firstInitials = name[0].substring(0, 2);
 		String lastInitials = name[1].substring(0, 2);
-		String birthYear = Integer.toString(birthDate.get(Calendar.YEAR));
+		getBirthDateInfo(birthDate);
 		this.email = firstInitials + birthYear + lastInitials +"@my.century.edu";
 		this.studentId = firstInitials + birthYear + lastInitials;
 		this.password = password;
 		this.courses = courses;
+	}
+	
+	public void getBirthDateInfo(String birthDate) {
+		String[] birth = birthDate.split("/");
+		this.birthMonth = birth[0];
+		this.birthDay = birth[1];
+		this.birthYear = birth[2];
+		this.birthDate = birthDate;
 	}
 
 	/**
@@ -73,6 +84,14 @@ public class Student implements Serializable{
 
 	public void setStudentId(String studentId) {
 		this.studentId = studentId;
+	}
+	
+	public String getBirthDate() {
+		return birthDate;
+	}
+	
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	public String getFirstName() {
@@ -97,14 +116,6 @@ public class Student implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Calendar getBirthDate() {
-		return birthDate;
-	}
-
-	public void setBirthDate(Calendar birthDate) {
-		this.birthDate = birthDate;
 	}
 	
 	public String getPassword() {
@@ -164,8 +175,7 @@ public class Student implements Serializable{
 	@Override
 	public String toString() {
 		String studentInfo = "\nFull Name: " + firstName + " " + lastName + "\nBirth Date: " + 
-				birthDate.get(Calendar.MONTH)+"/"+birthDate.get(Calendar.DAY_OF_MONTH)+"/"+
-				birthDate.get(Calendar.YEAR) + "\nEmail: " + email +"\n" + courses;
+				birthMonth+"/"+birthDay+"/"+birthYear + "\nEmail: " + email +"\n" + courses;
 		return studentInfo;
 	}
 
