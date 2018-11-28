@@ -40,6 +40,8 @@ public class GUI extends JFrame implements ActionListener {
 	private JTextField emailAddressTXTField;
 	private JTextField passwordTXTField;
 	private JTextArea outputArea;
+	private JButton btnRegister;
+	private Student s1 = new Student();
 
 	/**
 	 * Launch the application.
@@ -69,7 +71,7 @@ public class GUI extends JFrame implements ActionListener {
 	 */
 	public void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 375);
+		frame.setBounds(100, 100, 450, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
@@ -103,7 +105,7 @@ public class GUI extends JFrame implements ActionListener {
 		intro.add(btnExistingStudent);
 		
 		JLabel lblFullName = new JLabel("Full Name:");
-		lblFullName.setBounds(0, 63, 101, 26);
+		lblFullName.setBounds(10, 63, 101, 26);
 		newStudent.add(lblFullName);
 		
 		fullNameTXTField = new JTextField();
@@ -112,7 +114,7 @@ public class GUI extends JFrame implements ActionListener {
 		fullNameTXTField.setColumns(10);
 		
 		JLabel lblBirthDatemmddyyyy = new JLabel("Birth Date (MM/DD/YYYY):");
-		lblBirthDatemmddyyyy.setBounds(0, 116, 249, 26);
+		lblBirthDatemmddyyyy.setBounds(10, 116, 249, 26);
 		newStudent.add(lblBirthDatemmddyyyy);
 		
 		birthDateTXTField = new JTextField();
@@ -121,7 +123,7 @@ public class GUI extends JFrame implements ActionListener {
 		birthDateTXTField.setColumns(10);
 		
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(0, 163, 101, 26);
+		lblPassword.setBounds(10, 163, 101, 26);
 		newStudent.add(lblPassword);
 		
 		newPasswordTXTField = new JTextField();
@@ -129,7 +131,7 @@ public class GUI extends JFrame implements ActionListener {
 		newStudent.add(newPasswordTXTField);
 		newPasswordTXTField.setColumns(10);
 		
-		JButton btnRegister = new JButton("Register");
+		btnRegister = new JButton("Register");
 		btnRegister.addActionListener(this);
 		btnRegister.setBounds(135, 198, 141, 35);
 		newStudent.add(btnRegister);
@@ -139,7 +141,7 @@ public class GUI extends JFrame implements ActionListener {
 		newStudent.add(lblEnterTheFollowing);
 		
 		outputArea = new JTextArea();
-		outputArea.setBounds(0, 246, 414, 53);
+		outputArea.setBounds(10, 250, 400, 75);
 		newStudent.add(outputArea);
 		
 		JLabel lblPleaseLogin = new JLabel("Please Login");
@@ -182,16 +184,19 @@ public class GUI extends JFrame implements ActionListener {
 			intro.setVisible(false);
 		}
 		else if(nameOfCallingBtn.equals("Register")) {
-			SimpleDateFormat format = new SimpleDateFormat("mm/DD/yyyy");
+			SimpleDateFormat format = new SimpleDateFormat("mm/dd/yyyy");
 			GregorianCalendar cal1 = new GregorianCalendar();
 			try {
 				cal1.setTime(format.parse(birthDateTXTField.getText()));
 			} catch (ParseException e1) {
 				e1.printStackTrace();
 			}
-			Student s1 = new Student(fullNameTXTField.getText(), cal1, passwordTXTField.getText(), null);
+			s1 = new Student(fullNameTXTField.getText(), cal1, passwordTXTField.getText(), null);
+			writeStudents(s1);
 			outputArea.append("Thank you for your Registration!!");
-			outputArea.append(s1.toString());
+			outputArea.append((String)(readStudents()));
+			btnRegister.setEnabled(false);
+			
 		} 
 		else if (nameOfCallingBtn.equals("Clear Console")) {
 			clearConsole();
@@ -237,8 +242,6 @@ public class GUI extends JFrame implements ActionListener {
         }
         return output;
 	}
-
-
 }
 
 

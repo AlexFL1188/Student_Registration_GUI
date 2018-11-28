@@ -119,13 +119,13 @@ public class Driver {
 		stmp.add(s2);
 
 
-		writeStudents(stmp);
-        System.out.println(readStudents());
+//		writeStudents(stmp);
+//        System.out.println(readStudents());
         
 		Student s3 = new Student("bob Davis", new GregorianCalendar(2000, 01, 17), "temp", null);
 		stmp.add(s3);
 		
-		appendStudents(stmp);
+//		appendStudents(stmp);
         System.out.println(readStudents());
 
 	}
