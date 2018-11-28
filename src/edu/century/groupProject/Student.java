@@ -1,8 +1,7 @@
 package edu.century.groupProject;
 
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+
 
 import edu.century.groupProject.collections.CourseCollection;
 
@@ -37,6 +36,7 @@ public class Student implements Serializable{
 		this.lastName = null;
 		this.email = null;
 		this.birthDate = null;
+		this.password = null;
 		this.courses = null;
 	}
 	/**
@@ -175,7 +175,8 @@ public class Student implements Serializable{
 	@Override
 	public String toString() {
 		String studentInfo = "\nFull Name: " + firstName + " " + lastName + "\nBirth Date: " + 
-				birthMonth+"/"+birthDay+"/"+birthYear + "\nEmail: " + email +"\n" + courses;
+				birthMonth+"/"+birthDay+"/"+birthYear + "\nEmail: " + email +"\n" + "Password: " 
+					+ password +"\n" + courses;
 		return studentInfo;
 	}
 

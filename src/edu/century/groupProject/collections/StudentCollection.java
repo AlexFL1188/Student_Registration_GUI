@@ -86,6 +86,15 @@ public class StudentCollection implements Serializable {
 			}
 		}
 	}
+	
+	public Student searchStudent(String email, String passWord) {
+		for (StudentNode cursor = head; cursor != null; cursor = cursor.getLink()) {
+			if (email.equals(cursor.getData().getEmail()) && passWord.equals(cursor.getData().getPassword())) {
+				return cursor.getData();
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * description:

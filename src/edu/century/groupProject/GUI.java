@@ -192,7 +192,7 @@ public class GUI extends JFrame implements ActionListener {
 		}
 		else if(nameOfCallingBtn.equals("Register")) {
 			s1 = new Student(fullNameTXTField.getText(), birthDateTXTField.getText(), 
-					passwordTXTField.getText(), null);
+					newPasswordTXTField.getText(), null);
 			sC.add(s1);
 			appendStudents(sC);
 			outputArea.append("Thank you for your Registration!!");
@@ -203,7 +203,7 @@ public class GUI extends JFrame implements ActionListener {
 			clearConsole();
 		}
 		else if (nameOfCallingBtn.equals("Login")) {
-		//needs work, needs to open instance of that student logging in.
+			System.out.print(sC.searchStudent(emailAddressTXTField.getText(), passwordTXTField.getText()));
 		}
 		
 	}
