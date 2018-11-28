@@ -15,6 +15,7 @@ import java.util.GregorianCalendar;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -34,6 +35,7 @@ public class GUI extends JFrame implements ActionListener {
 	private JPanel newStudent;
 	private JPanel existingStudent;
 	private JPanel intro;
+	private JPanel courseRegistration;
 	private JTextField fullNameTXTField;
 	private JTextField birthDateTXTField;
 	private JTextField newPasswordTXTField;
@@ -94,13 +96,18 @@ public class GUI extends JFrame implements ActionListener {
 		existingStudent.setLayout(null);
 		existingStudent.setVisible(false);
 		
+		courseRegistration = new JPanel();
+		frame.getContentPane().add(courseRegistration, "registrationPane");
+		courseRegistration.setLayout(null);
+		courseRegistration.setVisible(false);
+		
 		JLabel lblPleaseSelectFrom = new JLabel("Please Select From the Following:");
-		lblPleaseSelectFrom.setBounds(77, 21, 316, 26);
+		lblPleaseSelectFrom.setBounds(105, 21, 316, 26);
 		intro.add(lblPleaseSelectFrom);
 		
 		JButton btnNewStudent = new JButton("NEW STUDENT");
 		btnNewStudent.addActionListener(this);
-		btnNewStudent.setBounds(117, 80, 175, 35);
+		btnNewStudent.setBounds(120, 80, 175, 35);
 		intro.add(btnNewStudent);
 		
 		JButton btnExistingStudent = new JButton("EXISTING STUDENT");
@@ -141,7 +148,7 @@ public class GUI extends JFrame implements ActionListener {
 		newStudent.add(btnRegister);
 		
 		JLabel lblEnterTheFollowing = new JLabel("Enter The Following Information");
-		lblEnterTheFollowing.setBounds(57, 10, 315, 32);
+		lblEnterTheFollowing.setBounds(115, 10, 315, 32);
 		newStudent.add(lblEnterTheFollowing);
 		
 		outputArea = new JTextArea();
@@ -149,11 +156,11 @@ public class GUI extends JFrame implements ActionListener {
 		newStudent.add(outputArea);
 		
 		JLabel lblPleaseLogin = new JLabel("Please Login");
-		lblPleaseLogin.setBounds(137, 21, 121, 26);
+		lblPleaseLogin.setBounds(150, 21, 121, 26);
 		existingStudent.add(lblPleaseLogin);
 		
 		JLabel lblNewLabel = new JLabel("EMail Address:");
-		lblNewLabel.setBounds(0, 87, 137, 29);
+		lblNewLabel.setBounds(10, 87, 137, 29);
 		existingStudent.add(lblNewLabel);
 		
 		emailAddressTXTField = new JTextField();
@@ -162,7 +169,7 @@ public class GUI extends JFrame implements ActionListener {
 		emailAddressTXTField.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Password:");
-		lblNewLabel_1.setBounds(0, 176, 104, 29);
+		lblNewLabel_1.setBounds(10, 176, 104, 29);
 		existingStudent.add(lblNewLabel_1);
 		
 		passwordTXTField = new JTextField();
@@ -199,9 +206,8 @@ public class GUI extends JFrame implements ActionListener {
 			sC.add(s1);
 			appendStudents(sC);
 			outputArea.append("Thank you for your Registration!!");
-			outputArea.append(sC.toString());
 			btnRegister.setEnabled(false);
-			
+			newRegOptions();
 		} 
 		else if (nameOfCallingBtn.equals("Clear Console")) {
 			clearConsole();
@@ -210,6 +216,21 @@ public class GUI extends JFrame implements ActionListener {
 		//needs work, needs to open instance of that student logging in.
 		}
 		
+	}
+	
+	public void newRegOptions() {
+    	String[] options = {"Yes", "Quit"};
+    	int optionsPane = JOptionPane.showOptionDialog(null,
+    	   		"Would You like to Register for Courses?", "Thank You!",
+    	   			JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, 
+    	   				null, options, options[0]);
+    	if(optionsPane == 0) {
+    		courseRegistration.setVisible(true);
+    		newStudent.setVisible(false);
+    	}
+    	else {
+    		System.exit(0);
+    	}
 	}
 	
 	//method to clear text output field
