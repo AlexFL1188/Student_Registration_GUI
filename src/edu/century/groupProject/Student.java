@@ -2,7 +2,6 @@ package edu.century.groupProject;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import edu.century.groupProject.collections.CourseCollection;
 
@@ -17,7 +16,7 @@ public class Student implements Serializable{
 	private String lastName;
 	private String email;
 	private String password;
-	private GregorianCalendar birthDate;
+	private Calendar birthDate;
 	private CourseCollection courses;
 	/**
 	 * description:
@@ -45,7 +44,7 @@ public class Student implements Serializable{
 	 * assigns and mutates values required to create the correct info for a required student object
 	 * Throws:
 	 */
-	public Student(String fullName, GregorianCalendar birthDate, String password, CourseCollection courses) {
+	public Student(String fullName, Calendar birthDate, String password, CourseCollection courses) {
 		String[] name = fullName.split(" ");
 		this.firstName = name[0];
 		this.lastName = name[1];
@@ -100,11 +99,11 @@ public class Student implements Serializable{
 		this.email = email;
 	}
 
-	public GregorianCalendar getBirthDate() {
+	public Calendar getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(GregorianCalendar birthDate) {
+	public void setBirthDate(Calendar birthDate) {
 		this.birthDate = birthDate;
 	}
 	

@@ -8,9 +8,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -45,7 +46,6 @@ public class GUI extends JFrame implements ActionListener {
 	private JButton btnRegister;
 	private StudentCollection sC = new StudentCollection();
 	private Student s1 = new Student();
-	private GregorianCalendar cal1 = new GregorianCalendar();
 
 
 	/**
@@ -195,10 +195,11 @@ public class GUI extends JFrame implements ActionListener {
 			intro.setVisible(false);
 		}
 		else if(nameOfCallingBtn.equals("Register")) {
-			cal1 = new GregorianCalendar();
-			SimpleDateFormat format = new SimpleDateFormat("mm/DD/yyyy");
+			DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+			Calendar cal1 = Calendar.getInstance();
 			try {
 				cal1.setTime(format.parse(birthDateTXTField.getText()));
+				cal1.set(Calendar.MONTH, cal1.get(Calendar.MONTH) + 1);
 			} catch (ParseException e1) {
 				e1.printStackTrace();
 			}
