@@ -41,7 +41,10 @@ public class GUI extends JFrame implements ActionListener {
 	private JTextField passwordTXTField;
 	private JTextArea outputArea;
 	private JButton btnRegister;
+	private StudentCollection sC = new StudentCollection();
 	private Student s1 = new Student();
+	private GregorianCalendar cal1 = new GregorianCalendar();
+
 
 	/**
 	 * Launch the application.
@@ -64,6 +67,7 @@ public class GUI extends JFrame implements ActionListener {
 	 */
 	public GUI() {
 		initialize();
+		sC = (StudentCollection) readStudents();
 	}
 
 	/**
@@ -184,17 +188,18 @@ public class GUI extends JFrame implements ActionListener {
 			intro.setVisible(false);
 		}
 		else if(nameOfCallingBtn.equals("Register")) {
-			SimpleDateFormat format = new SimpleDateFormat("mm/dd/yyyy");
-			GregorianCalendar cal1 = new GregorianCalendar();
+			cal1 = new GregorianCalendar();
+			SimpleDateFormat format = new SimpleDateFormat("mm/DD/yyyy");
 			try {
 				cal1.setTime(format.parse(birthDateTXTField.getText()));
 			} catch (ParseException e1) {
 				e1.printStackTrace();
 			}
 			s1 = new Student(fullNameTXTField.getText(), cal1, passwordTXTField.getText(), null);
-			writeStudents(s1);
+			sC.add(s1);
+			appendStudents(sC);
 			outputArea.append("Thank you for your Registration!!");
-			outputArea.append((String)(readStudents()));
+			outputArea.append(sC.toString());
 			btnRegister.setEnabled(false);
 			
 		} 
@@ -211,7 +216,8 @@ public class GUI extends JFrame implements ActionListener {
 	public void clearConsole() {
 		outputArea.setText("");
 	}
-	public static <S> void writeStudents(S input) {
+	
+	public static <S> void appendStudents(S input) {
 		//write object to file serial
 		FileOutputStream fos = null;
         ObjectOutputStream out = null;
