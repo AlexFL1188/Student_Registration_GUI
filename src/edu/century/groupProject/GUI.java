@@ -191,11 +191,11 @@ public class GUI extends JFrame implements ActionListener {
 			intro.setVisible(false);
 		}
 		else if(nameOfCallingBtn.equals("Register")) {
-			s1 = new Student(fullNameTXTField.getText(),birthDateTXTField.getText() , passwordTXTField.getText(), null);
+			s1 = new Student(fullNameTXTField.getText(), birthDateTXTField.getText(), 
+					passwordTXTField.getText(), null);
 			sC.add(s1);
 			appendStudents(sC);
 			outputArea.append("Thank you for your Registration!!");
-			outputArea.append(sC.toString());
 			btnRegister.setEnabled(false);
 			newRegOptions();
 		} 
@@ -260,5 +260,3 @@ public class GUI extends JFrame implements ActionListener {
         return output;
 	}
 }
-
-
