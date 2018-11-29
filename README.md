@@ -5,11 +5,11 @@ CSCI 2082 Group Project Information
 ---------------------------------------------------------------------------------------
 # Tasks To be Completed
 
- [x]**- create GUI** *Completed by Alexander Reimer*
+- [x] **- create GUI** *Completed by Alexander Reimer*
 
-	- [ x]-create the following pages: Intro, newStudent, existingStudent, courseRegistration *Completed by Alexander Reimer*
+	- [x] -create the following pages: Intro, newStudent, existingStudent, courseRegistration *Completed by Alexander Reimer*
 
-**- implement Serializable** *Completed by Alexander Reimer*
+- [x] **- implement Serializable** *Completed by Alexander Reimer*
 
 	-create required methods *Completed by Alexander Reimer*
 	-implement into code for successful operation *Completed by Alexander Reimer*
