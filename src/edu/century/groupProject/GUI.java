@@ -251,7 +251,7 @@ public class GUI extends JFrame implements ActionListener {
 			clearConsole();
 		}
 		else if (nameOfCallingBtn.equals("Login")) {
-			Student s = new Student();
+			Student s = null;
 			s = sC.searchStudent(emailAddressTXTField.getText(), passwordTXTField.getText());
 			outputArea.append(s.toString());
 			if(s != null) {
@@ -265,8 +265,8 @@ public class GUI extends JFrame implements ActionListener {
 			clearConsole();
 			btnAddCourse.setEnabled(false);
 			btnRemoveCourse.setEnabled(false);
-			cC.add((Course) comboBox.getSelectedItem());
-			s1.setCourses(cC);
+			s1.courses.add((Course) comboBox.getSelectedItem());
+			//s1.setCourses(cC);
 			outputArea.append(s1.toString());
 			sC.add(s1);
 			appendStudents(sC);

@@ -20,7 +20,7 @@ public class Student implements Serializable{
 	private String birthMonth;
 	private String birthDay;
 	private String birthYear;
-	private CourseCollection courses;
+	public CourseCollection courses;
 	/**
 	 * description:
 	 * null constructor
