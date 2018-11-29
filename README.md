@@ -36,7 +36,7 @@ CSCI 2082 Group Project Information
 **- allow student to remove course from their course collection**
 
 	-create button in GUI for action *Completed by Alexander Reimer*
-	-create method to remove selected course from the current student instance courseCollection Object
+	-create method to remove selected course from the current student instance courseCollection Object *method created, needs work(Alexander Reimer)*
 
 **- allow student to see required materials for the courses they are registered**
 
@@ -44,7 +44,7 @@ CSCI 2082 Group Project Information
 
 **- allow student to get back TXT file of up-coming/registered courses**
 
-	-create button in GUI for action
+	-create button in GUI for action *Completed by Alexander Reimer*
 	-create method to output the current students info to a TXT file
 
 
