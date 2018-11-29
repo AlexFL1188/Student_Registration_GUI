@@ -27,6 +27,8 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class GUI extends JFrame implements ActionListener {
 
@@ -49,6 +51,7 @@ public class GUI extends JFrame implements ActionListener {
 	private JButton btnLogin;
 	private JButton btnAddCourse;
 	private JButton btnRemoveCourse;
+	private JButton btnGetTxtDocument;
 	private StudentCollection sC = new StudentCollection();
 	private CourseCollection cC = new CourseCollection();
 	private Student s1 = new Student();
@@ -202,18 +205,29 @@ public class GUI extends JFrame implements ActionListener {
 		courseRegistration.setLayout(null);
 		
 		comboBox = new JComboBox(ClassList.courses);
-		comboBox.setBounds(21, 103, 381, 81);
+		comboBox.setBounds(21, 80, 381, 81);
 		courseRegistration.add(comboBox);
 		
 		btnAddCourse = new JButton("Add Course");
 		btnAddCourse.addActionListener(this);
-		btnAddCourse.setBounds(21, 221, 183, 35);
+		btnAddCourse.setBounds(21, 180, 183, 60);
 		courseRegistration.add(btnAddCourse);
 		
 		btnRemoveCourse = new JButton("Remove Course");
 		btnRemoveCourse.addActionListener(this);
-		btnRemoveCourse.setBounds(225, 221, 177, 35);
+		btnRemoveCourse.setBounds(225, 180, 177, 60);
 		courseRegistration.add(btnRemoveCourse);
+		
+		JLabel lblCourseRegistration = new JLabel("Course Registration");
+		lblCourseRegistration.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		lblCourseRegistration.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCourseRegistration.setBounds(21, 21, 381, 35);
+		courseRegistration.add(lblCourseRegistration);
+		
+		btnGetTxtDocument = new JButton("Get TXT Document");
+		btnGetTxtDocument.addActionListener(this);
+		btnGetTxtDocument.setBounds(21, 260, 381, 60);
+		courseRegistration.add(btnGetTxtDocument);
 		
 		outputScrollPanel = new JPanel();
 		GridBagConstraints gbc_outputScrollPanel = new GridBagConstraints();
@@ -230,26 +244,28 @@ public class GUI extends JFrame implements ActionListener {
 	//action method to determine what buttons do what
 	public void actionPerformed(ActionEvent e) {
 		String nameOfCallingBtn = e.getActionCommand();
+		//action for button if you are a new student
 		if(nameOfCallingBtn.equals("NEW STUDENT")) {
 			newStudent.setVisible(true);
 			intro.setVisible(false);
 		}
+		//action for button to choose if your are an Existing Student
 		else if(nameOfCallingBtn.equals("EXISTING STUDENT")) {
 			existingStudent.setVisible(true);
 			intro.setVisible(false);
 		}
+		//action for button to enroll new student
 		else if(nameOfCallingBtn.equals("Enroll")) {
 			s1 = new Student(fullNameTXTField.getText(), birthDateTXTField.getText(), 
 					newPasswordTXTField.getText(), null);
+			s1.setCourses(cC);
 			sC.add(s1);
 			appendStudents(sC);
 			outputArea.append("Thank you for your Registration!!");
 			btnEnroll.setEnabled(false);
 			newEnrollOptions();
 		} 
-		else if (nameOfCallingBtn.equals("Clear Console")) {
-			clearConsole();
-		}
+		//action for button to login
 		else if (nameOfCallingBtn.equals("Login")) {
 			Student s = null;
 			s = sC.searchStudent(emailAddressTXTField.getText(), passwordTXTField.getText());
@@ -261,22 +277,31 @@ public class GUI extends JFrame implements ActionListener {
 				s1 = s;
 			}
 		}
+		//action for button to add a course to a student
 		else if (nameOfCallingBtn.equals("Add Course")) {
 			clearConsole();
 			btnAddCourse.setEnabled(false);
 			btnRemoveCourse.setEnabled(false);
 			s1.courses.add((Course) comboBox.getSelectedItem());
-			//s1.setCourses(cC);
 			outputArea.append(s1.toString());
 			sC.add(s1);
 			appendStudents(sC);
 			courseRegOptions();
 		}
+		//action for button to remove a course from a student
 		else if (nameOfCallingBtn.equals("Remove Course")) {
-			
+			clearConsole();
+			btnAddCourse.setEnabled(false);
+			btnRemoveCourse.setEnabled(false);
+			s1.courses.remove((Course) comboBox.getSelectedItem());
+			outputArea.append(s1.toString());
+			sC.add(s1);
+			appendStudents(sC);
+			courseRegOptions();
 		}
 		
 	}
+	//void method to show and decide what the next options are after registering for a course
 	public void courseRegOptions() {
     	String[] options = {"Yes", "Quit"};
     	int optionsPane = JOptionPane.showOptionDialog(null,
@@ -291,7 +316,7 @@ public class GUI extends JFrame implements ActionListener {
     		System.exit(0);
     	}
 	}
-	
+	//void method to display and decide what next options are after enrolling new student
 	public void newEnrollOptions() {
     	String[] options = {"Yes", "Quit"};
     	int optionsPane = JOptionPane.showOptionDialog(null,
