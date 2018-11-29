@@ -106,16 +106,16 @@ public class CourseCollection implements Serializable {
 	}
 	/**
 	 * description:
-	 * boolean method to search for a Course Id within a Course object 
+	 * boolean method to search for a Course Number within a Course object 
 	 * Precondition:
-	 * method takes in an int value or courseId to search for
+	 * method takes in an int value or courseNumber to search for
 	 * Postcondition:
 	 * after execution the method returns a true or false value depending on if the courseId was found
 	 * Throws:
 	 */
-	public boolean searchId(int target) {
+	public boolean searchCourseNumber(int target) {
 		for (CourseNode cursor = head; cursor != null; cursor = cursor.getLink()) {
-			if (target == (cursor.getData().getId())) {
+			if (target == (cursor.getData().getCourseNumber())) {
 				return true;
 			}
 		}

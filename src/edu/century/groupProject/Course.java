@@ -8,12 +8,11 @@ public class Course implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	//creating instances of a Course
-	private int id;
 	private String subject;
 	private int credits;
 	private int courseNumber;
 	private int courseSection;
-	private String coursetitle;
+	private String courseTitle;
 	private String instructor;
 	private Materials materials;
 	/**
@@ -26,12 +25,11 @@ public class Course implements Serializable {
 	 * Throws:
 	 */
 	public Course() {
-		this.id = 0;
 		this.subject = null;
 		this.credits = 0;
 		this.courseNumber = 0;
 		this.courseSection = 0;
-		this.coursetitle = null;
+		this.courseTitle = null;
 		this.instructor = null;
 		this.setMaterials(null);
 	}
@@ -44,13 +42,12 @@ public class Course implements Serializable {
 	 * assigns those arguments to create a object of type Course
 	 * Throws:
 	 */
-	public Course(int id, String subject, int credits, int courseNumber, int courseSection, String title, String instructor, Materials materials) {
-		this.id = id;
+	public Course(String subject, int credits, int courseNumber, int courseSection, String title, String instructor, Materials materials) {
 		this.subject = subject;
 		this.credits = credits;
 		this.courseNumber = courseNumber;
 		this.courseSection = courseSection;
-		this.coursetitle = title;
+		this.courseTitle = title;
 		this.instructor = instructor;
 		this.setMaterials(materials);
 	}
@@ -63,14 +60,6 @@ public class Course implements Serializable {
 	 * getters return the value requested, and setters return nothing but have set the appropriate values
 	 * Throws:
 	 */
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getSubject() {
 		return subject;
 	}
@@ -104,11 +93,11 @@ public class Course implements Serializable {
 	}
 
 	public String getCourseTitle() {
-		return coursetitle;
+		return courseTitle;
 	}
 
 	public void setCourseTitle(String status) {
-		this.coursetitle = status;
+		this.courseTitle = status;
 	}
 
 	public String getInstructor() {
@@ -124,22 +113,6 @@ public class Course implements Serializable {
 
 	public void setInstructor(String instructor) {
 		this.instructor = instructor;
-	}
-	/**
-	 * description:
-	 * boolean method created to determine if a Course Id is equal to another course id
-	 * Precondition:
-	 * takes in an value type int Id
-	 * Postcondition:
-	 * uses the value to determine if a courseId is equal to another courseId
-	 * Throws:
-	 */
-	public boolean equals(int ID) {
-		if(id == ID) {
-			return true;
-		}
-		else
-			return false;
 	}
 	/**
 	 * description:
@@ -164,8 +137,8 @@ public class Course implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		String courseInfo = "\t-ID: " + id + " Subject: " + subject + " Credits: " + credits + " Course Number: "
-				+ courseNumber + " Course Section: " + courseSection + " Title: " + coursetitle + " Instructor: "
+		String courseInfo = "\tSubject: " + subject + " Credits: " + credits + " Course Number: "
+				+ courseNumber + " Course Section: " + courseSection + " Title: " + courseTitle + " Instructor: "
 				+ instructor;
 		
 		return courseInfo;
