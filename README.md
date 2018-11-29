@@ -8,9 +8,11 @@ CSCI 2082 Group Project Information
 - create gui *Completed by Alexander Reimer*
 
 - implement Serializable *Completed by Alexander Reimer*
+
 	-create required methods *Completed by Alexander Reimer*
 	
 - allow creation of new student with student ID, email, & password *Completed by Alexander Reimer*
+
 	-implement in GUI *Completed by Alexander Reimer*
 	
 - allow student to look at different courses *Completed by Alexander Reimer*
