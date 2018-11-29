@@ -174,9 +174,9 @@ public class Student implements Serializable{
 	 */
 	@Override
 	public String toString() {
-		String studentInfo = "\nFull Name: " + firstName + " " + lastName + "\nBirth Date: " + 
+		String studentInfo = "Full Name: " + firstName + " " + lastName + "\nBirth Date: " + 
 				birthMonth+"/"+birthDay+"/"+birthYear + "\nEmail: " + email +"\n" + "Password: " 
-					+ password +"\n" + courses;
+					+ password +"\n" + "\nCourses:\n" + courses;
 		return studentInfo;
 	}
 

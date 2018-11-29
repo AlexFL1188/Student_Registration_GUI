@@ -109,9 +109,9 @@ public class StudentCollection implements Serializable {
 	public String toString() {
 		
 		StudentNode cursor = head;
-		String info = "Number of Students: " + numberOfStudents +"\n" + "Students: \n";
+		String info = "Number of Students: " + numberOfStudents +"\n" + "Students: \n\n";
 		for (cursor = head; cursor != null; cursor = cursor.getLink()) {
-			info += cursor.getData() + "\n";
+			info += cursor.getData() + "\n\n";
 		}
 		return info;
 	}
