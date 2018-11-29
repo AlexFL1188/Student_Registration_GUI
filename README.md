@@ -25,20 +25,36 @@ CSCI 2082 Group Project Information
 
 **- allow student to login based on email and password** *Completed by Alexander Reimer*
 
+	-create required buttons in GUI *Completed by Alexander Reimer*
 	-create methods to check login info with instance of student in studentCollection and redirect student in appropriate manner *Completed by Alexander Reimer*
 
 **- allow student to add courses to their course collection** *Completed by Alexander Reimer*
 
-	-create method to add selected course in GUI to the current student instances courseCollection *Completed by Alexander Reimer*
+	-create button in GUI for action *Completed by Alexander Reimer*
+	-create method to add selected course to the current student instance courseCollection Object *Completed by Alexander Reimer*
 
 **- allow student to remove course from their course collection**
 
+	-create button in GUI for action *Completed by Alexander Reimer*
+	-create method to remove selected course from the current student instance courseCollection Object
+
 **- allow student to see required materials for the courses they are registered**
+
+	-create button in GUI for action
 
 **- allow student to get back TXT file of up-coming/registered courses**
 
+	-create button in GUI for action
+	-create method to output the current students info to a TXT file
+
+
 **- If course is full, allow student to add to wishlist**
 
+	-create methods to handle if course is full
+	-create wishlist instance in student
+
+---------------------------------------------------------------------------------------
+# Steps/Time Line
 ---------------------------------------------------------------------------------------
 
 Step 1: (Due 09/06/2018 @11:30PM)
