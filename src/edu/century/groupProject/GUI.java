@@ -51,7 +51,6 @@ public class GUI extends JFrame implements ActionListener {
 	private JButton btnRemoveCourse;
 	private StudentCollection sC = new StudentCollection();
 	private CourseCollection cC = new CourseCollection();
-	private Course c = new Course();
 	private Student s1 = new Student();
 	private JPanel pagePanel;
 	private JPanel outputScrollPanel;
