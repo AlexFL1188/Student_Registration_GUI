@@ -44,7 +44,7 @@ public class GUI extends JFrame implements ActionListener {
 	private JTextField emailAddressTXTField;
 	private JTextField passwordTXTField;
 	private JTextArea outputArea;
-	private JButton btnRegister;
+	private JButton btnEnroll;
 	private JButton btnLogin;
 	private StudentCollection sC = new StudentCollection();
 	private Student s1 = new Student();
@@ -110,12 +110,12 @@ public class GUI extends JFrame implements ActionListener {
 		
 		JButton btnNewStudent = new JButton("NEW STUDENT");
 		btnNewStudent.addActionListener(this);
-		btnNewStudent.setBounds(120, 80, 175, 35);
+		btnNewStudent.setBounds(120, 80, 175, 75);
 		intro.add(btnNewStudent);
 		
 		JButton btnExistingStudent = new JButton("EXISTING STUDENT");
 		btnExistingStudent.addActionListener(this);
-		btnExistingStudent.setBounds(91, 136, 232, 35);
+		btnExistingStudent.setBounds(91, 180, 232, 75);
 		intro.add(btnExistingStudent);
 		
 		newStudent = new JPanel();
@@ -150,10 +150,10 @@ public class GUI extends JFrame implements ActionListener {
 		newStudent.add(newPasswordTXTField);
 		newPasswordTXTField.setColumns(10);
 		
-		btnRegister = new JButton("Register");
-		btnRegister.addActionListener(this);
-		btnRegister.setBounds(135, 198, 141, 35);
-		newStudent.add(btnRegister);
+		btnEnroll = new JButton("Enroll");
+		btnEnroll.addActionListener(this);
+		btnEnroll.setBounds(135, 240, 141, 75);
+		newStudent.add(btnEnroll);
 		
 		JLabel lblEnterTheFollowing = new JLabel("Enter The Following Information");
 		lblEnterTheFollowing.setBounds(115, 10, 315, 32);
@@ -219,14 +219,14 @@ public class GUI extends JFrame implements ActionListener {
 			existingStudent.setVisible(true);
 			intro.setVisible(false);
 		}
-		else if(nameOfCallingBtn.equals("Register")) {
+		else if(nameOfCallingBtn.equals("Enroll")) {
 			s1 = new Student(fullNameTXTField.getText(), birthDateTXTField.getText(), 
 					newPasswordTXTField.getText(), null);
 			sC.add(s1);
 			appendStudents(sC);
 			outputArea.append("Thank you for your Registration!!");
-			btnRegister.setEnabled(false);
-			newRegOptions();
+			btnEnroll.setEnabled(false);
+			newEnrollOptions();
 		} 
 		else if (nameOfCallingBtn.equals("Clear Console")) {
 			clearConsole();
@@ -248,7 +248,7 @@ public class GUI extends JFrame implements ActionListener {
 		
 	}
 	
-	public void newRegOptions() {
+	public void newEnrollOptions() {
     	String[] options = {"Yes", "Quit"};
     	int optionsPane = JOptionPane.showOptionDialog(null,
     	   		"Would You like to Register for Courses?", "Thank You!",
