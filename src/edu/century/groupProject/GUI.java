@@ -21,6 +21,11 @@ import edu.century.groupProject.collections.CourseCollection;
 import edu.century.groupProject.collections.StudentCollection;
 import edu.century.groupProject.Student;
 import edu.century.groupProject.ClassList;
+import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import javax.swing.JScrollPane;
 
 public class GUI extends JFrame implements ActionListener {
 
@@ -40,8 +45,11 @@ public class GUI extends JFrame implements ActionListener {
 	private JTextField passwordTXTField;
 	private JTextArea outputArea;
 	private JButton btnRegister;
+	private JButton btnLogin;
 	private StudentCollection sC = new StudentCollection();
 	private Student s1 = new Student();
+	private JPanel panel;
+	private JPanel panel_1;
 
 
 	/**
@@ -73,29 +81,28 @@ public class GUI extends JFrame implements ActionListener {
 	 */
 	public void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 400);
+		frame.setBounds(100, 100, 450, 580);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new CardLayout(0, 0));
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{424, 0};
+		gridBagLayout.rowHeights = new int[]{340, 164, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		frame.getContentPane().setLayout(gridBagLayout);
+		
+		panel = new JPanel();
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.insets = new Insets(0, 0, 5, 0);
+		gbc_panel.gridx = 0;
+		gbc_panel.gridy = 0;
+		frame.getContentPane().add(panel, gbc_panel);
+		panel.setLayout(new CardLayout(0, 0));
 		
 		intro = new JPanel();
-		frame.getContentPane().add(intro, "name_1824609994943200");
+		panel.add(intro, "name_1209706530643200");
 		intro.setLayout(null);
 		intro.setVisible(true);
-		
-		newStudent = new JPanel();
-		frame.getContentPane().add(newStudent, "name_1824610007818800");
-		newStudent.setLayout(null);
-		newStudent.setVisible(false);
-		
-		existingStudent = new JPanel();
-		frame.getContentPane().add(existingStudent, "name_1824610020971200");
-		existingStudent.setLayout(null);
-		existingStudent.setVisible(false);
-		
-		courseRegistration = new JPanel();
-		frame.getContentPane().add(courseRegistration, "registrationPane");
-		courseRegistration.setLayout(null);
-		courseRegistration.setVisible(false);
 		
 		JLabel lblPleaseSelectFrom = new JLabel("Please Select From the Following:");
 		lblPleaseSelectFrom.setBounds(105, 21, 316, 26);
@@ -110,6 +117,11 @@ public class GUI extends JFrame implements ActionListener {
 		btnExistingStudent.addActionListener(this);
 		btnExistingStudent.setBounds(91, 136, 232, 35);
 		intro.add(btnExistingStudent);
+		
+		newStudent = new JPanel();
+		panel.add(newStudent, "name_1209706541749900");
+		newStudent.setLayout(null);
+		newStudent.setVisible(false);
 		
 		JLabel lblFullName = new JLabel("Full Name:");
 		lblFullName.setBounds(10, 63, 101, 26);
@@ -147,9 +159,10 @@ public class GUI extends JFrame implements ActionListener {
 		lblEnterTheFollowing.setBounds(115, 10, 315, 32);
 		newStudent.add(lblEnterTheFollowing);
 		
-		outputArea = new JTextArea();
-		outputArea.setBounds(10, 250, 400, 75);
-		newStudent.add(outputArea);
+		existingStudent = new JPanel();
+		panel.add(existingStudent, "name_1209706517892700");
+		existingStudent.setLayout(null);
+		existingStudent.setVisible(false);
 		
 		JLabel lblPleaseLogin = new JLabel("Please Login");
 		lblPleaseLogin.setBounds(150, 21, 121, 26);
@@ -173,10 +186,26 @@ public class GUI extends JFrame implements ActionListener {
 		existingStudent.add(passwordTXTField);
 		passwordTXTField.setColumns(10);
 		
-		JButton btnLogin = new JButton("Login");
+		btnLogin = new JButton("Login");
 		btnLogin.addActionListener(this);
 		btnLogin.setBounds(129, 243, 141, 35);
 		existingStudent.add(btnLogin);
+		
+		courseRegistration = new JPanel();
+		panel.add(courseRegistration, "name_1209706553262100");
+		courseRegistration.setLayout(null);
+		courseRegistration.setVisible(false);
+		
+		panel_1 = new JPanel();
+		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.fill = GridBagConstraints.BOTH;
+		gbc_panel_1.gridx = 0;
+		gbc_panel_1.gridy = 1;
+		frame.getContentPane().add(panel_1, gbc_panel_1);
+		panel_1.setLayout(new BorderLayout(0, 0));
+				
+		outputArea = new JTextArea();
+		panel_1.add(new JScrollPane(outputArea), BorderLayout.CENTER);
 	}
 	
 	//action method to determine what buttons do what
@@ -203,7 +232,18 @@ public class GUI extends JFrame implements ActionListener {
 			clearConsole();
 		}
 		else if (nameOfCallingBtn.equals("Login")) {
-			System.out.print(sC.searchStudent(emailAddressTXTField.getText(), passwordTXTField.getText()));
+			//first find student
+			Student s = new Student();
+			s = sC.searchStudent(emailAddressTXTField.getText(), passwordTXTField.getText());
+			outputArea.append(s.toString());
+			if(s != null) {
+				btnLogin.setEnabled(false);
+	    		courseRegistration.setVisible(true);
+	    		existingStudent.setVisible(false);
+			}
+			//***STILL NEED*** then remove student to allow changes
+			//***STILL NEED*** then re-add student to studentCollection
+			
 		}
 		
 	}
