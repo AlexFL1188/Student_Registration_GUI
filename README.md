@@ -33,10 +33,10 @@ CSCI 2082 Group Project Information
 	-create button in GUI for action *Completed by Alexander Reimer*
 	-create method to add selected course to the current student instance courseCollection Object *Completed by Alexander Reimer*
 
-**- allow student to remove course from their course collection**
+**- allow student to remove course from their course collection** *Completed by Alexander Reimer & Eric Thompson*
 
 	-create button in GUI for action *Completed by Alexander Reimer*
-	-create method to remove selected course from the current student instance courseCollection Object *method created, needs work(Alexander Reimer)*
+	-create method to remove selected course from the current student instance courseCollection Object *Completed by Alexander Reimer & Eric Thompson*
 
 **- allow student to see required materials for the courses they are registered**
 

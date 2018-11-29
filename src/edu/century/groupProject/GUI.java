@@ -275,6 +275,8 @@ public class GUI extends JFrame implements ActionListener {
 	    		courseRegistration.setVisible(true);
 	    		existingStudent.setVisible(false);
 				s1 = s;
+				cC = s.getCourses();
+				s1.setCourses(cC);
 			}
 		}
 		//action for button to add a course to a student
@@ -282,7 +284,8 @@ public class GUI extends JFrame implements ActionListener {
 			clearConsole();
 			btnAddCourse.setEnabled(false);
 			btnRemoveCourse.setEnabled(false);
-			s1.courses.add((Course) comboBox.getSelectedItem());
+			Course course = (Course) comboBox.getSelectedItem();
+			s1.courses.add(course);
 			outputArea.append(s1.toString());
 			sC.add(s1);
 			appendStudents(sC);
@@ -293,13 +296,14 @@ public class GUI extends JFrame implements ActionListener {
 			clearConsole();
 			btnAddCourse.setEnabled(false);
 			btnRemoveCourse.setEnabled(false);
-			s1.courses.remove((Course) comboBox.getSelectedItem());
+			Course target = (Course) comboBox.getSelectedItem();
+			Course c1 = s1.courses.searchCourseNumber(target);
+			s1.courses.remove(c1);
 			outputArea.append(s1.toString());
 			sC.add(s1);
 			appendStudents(sC);
 			courseRegOptions();
 		}
-		
 	}
 	//void method to show and decide what the next options are after registering for a course
 	public void courseRegOptions() {

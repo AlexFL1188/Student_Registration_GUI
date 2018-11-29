@@ -123,8 +123,11 @@ public class Course implements Serializable {
 	 * see if its equal to another object
 	 * Throws:
 	 */
-	public boolean equals(Object obj) {
-		return super.equals(obj);
+	public boolean equals(Course course) {
+		if(this.getCourseNumber() == course.getCourseNumber()) {
+			return true;
+		}
+		return false;
 	}
 	/**
 	 * description:

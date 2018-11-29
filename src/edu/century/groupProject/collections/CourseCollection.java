@@ -113,13 +113,13 @@ public class CourseCollection implements Serializable {
 	 * after execution the method returns a true or false value depending on if the courseId was found
 	 * Throws:
 	 */
-	public boolean searchCourseNumber(int target) {
+	public Course searchCourseNumber(Course target) {
 		for (CourseNode cursor = head; cursor != null; cursor = cursor.getLink()) {
-			if (target == (cursor.getData().getCourseNumber())) {
-				return true;
+			if (target.equals(cursor.getData())) {
+				return cursor.getData();
 			}
 		}
-		return false;
+		return null;
 	}
 	/**
 	 * description:
