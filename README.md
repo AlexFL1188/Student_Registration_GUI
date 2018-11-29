@@ -5,50 +5,50 @@ CSCI 2082 Group Project Information
 ---------------------------------------------------------------------------------------
 # Tasks To be Completed
 
-**- create GUI** *Completed by Alexander Reimer*
+- [x] **- create GUI** *Completed by Alexander Reimer*
 
 	-create the following pages: Intro, newStudent, existingStudent, courseRegistration *Completed by Alexander Reimer*
 
-**- implement Serializable** *Completed by Alexander Reimer*
+- [x] **- implement Serializable** *Completed by Alexander Reimer*
 
 	-create required methods *Completed by Alexander Reimer*
 	-implement into code for successful operation *Completed by Alexander Reimer*
 	
-**- allow creation of new student with student ID, email, & password** *Completed by Alexander Reimer*
+- [x] **- allow creation of new student with student ID, email, & password** *Completed by Alexander Reimer*
 
 	-create required method to create these items *Completed by Alexander Reimer*
 	-implement in GUI *Completed by Alexander Reimer*
 	
-**- allow student to look at different courses** *Completed by Alexander Reimer*
+- [x] **- allow student to look at different courses** *Completed by Alexander Reimer*
 
 	-implement a way of looking through course list in GUI *Completed by Alexander Reimer*
 
-**- allow student to login based on email and password** *Completed by Alexander Reimer*
+- [x] **- allow student to login based on email and password** *Completed by Alexander Reimer*
 
 	-create required buttons in GUI *Completed by Alexander Reimer*
 	-create methods to check login info with instance of student in studentCollection and redirect student in appropriate manner *Completed by Alexander Reimer*
 
-**- allow student to add courses to their course collection** *Completed by Alexander Reimer*
+- [x] **- allow student to add courses to their course collection** *Completed by Alexander Reimer*
 
 	-create button in GUI for action *Completed by Alexander Reimer*
 	-create method to add selected course to the current student instance courseCollection Object *Completed by Alexander Reimer*
 
-**- allow student to remove course from their course collection** *Completed by Alexander Reimer & Eric Thompson*
+- [x] **- allow student to remove course from their course collection** *Completed by Alexander Reimer & Eric Thompson*
 
 	-create button in GUI for action *Completed by Alexander Reimer*
 	-create method to remove selected course from the current student instance courseCollection Object *Completed by Alexander Reimer & Eric Thompson*
 
-**- allow student to see required materials for the courses they are registered**
+- [ ] **- allow student to see required materials for the courses they are registered**
 
 	-create button in GUI for action
 
-**- allow student to get back TXT file of up-coming/registered courses**
+- [ ] **- allow student to get back TXT file of up-coming/registered courses**
 
 	-create button in GUI for action *Completed by Alexander Reimer*
 	-create method to output the current students info to a TXT file
 
 
-**- If course is full, allow student to add to wishlist**
+- [ ] **- If course is full, allow student to add to wishlist**
 
 	-create methods to handle if course is full
 	-create wishlist instance in student
