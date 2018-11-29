@@ -243,7 +243,6 @@ public class GUI extends JFrame implements ActionListener {
 			}
 			//***STILL NEED*** then remove student to allow changes
 			//***STILL NEED*** then re-add student to studentCollection
-			
 		}
 		
 	}
