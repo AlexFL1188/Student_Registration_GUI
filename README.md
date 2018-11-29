@@ -7,7 +7,7 @@ CSCI 2082 Group Project Information
 
 **- create GUI** *Completed by Alexander Reimer*
 
-	- [x]-create the following pages: Intro, newStudent, existingStudent, courseRegistration *Completed by Alexander Reimer*
+	-create the following pages: Intro, newStudent, existingStudent, courseRegistration *Completed by Alexander Reimer*
 
 **- implement Serializable** *Completed by Alexander Reimer*
 
