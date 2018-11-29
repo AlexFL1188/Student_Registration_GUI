@@ -26,6 +26,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JScrollPane;
+import javax.swing.JComboBox;
 
 public class GUI extends JFrame implements ActionListener {
 
@@ -46,10 +47,15 @@ public class GUI extends JFrame implements ActionListener {
 	private JTextArea outputArea;
 	private JButton btnEnroll;
 	private JButton btnLogin;
+	private JButton btnAddCourse;
+	private JButton btnRemoveCourse;
 	private StudentCollection sC = new StudentCollection();
+	private CourseCollection cC = new CourseCollection();
+	private Course c = new Course();
 	private Student s1 = new Student();
-	private JPanel panel;
-	private JPanel panel_1;
+	private JPanel pagePanel;
+	private JPanel outputScrollPanel;
+	private JComboBox<?> comboBox;
 
 
 	/**
@@ -81,7 +87,8 @@ public class GUI extends JFrame implements ActionListener {
 	 */
 	public void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 580);
+		frame.setResizable(false);
+		frame.setBounds(100, 100, 428, 560);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{424, 0};
@@ -90,17 +97,17 @@ public class GUI extends JFrame implements ActionListener {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
 		
-		panel = new JPanel();
-		GridBagConstraints gbc_panel = new GridBagConstraints();
-		gbc_panel.fill = GridBagConstraints.BOTH;
-		gbc_panel.insets = new Insets(0, 0, 5, 0);
-		gbc_panel.gridx = 0;
-		gbc_panel.gridy = 0;
-		frame.getContentPane().add(panel, gbc_panel);
-		panel.setLayout(new CardLayout(0, 0));
+		pagePanel = new JPanel();
+		GridBagConstraints gbc_pagePanel = new GridBagConstraints();
+		gbc_pagePanel.fill = GridBagConstraints.BOTH;
+		gbc_pagePanel.insets = new Insets(0, 0, 5, 0);
+		gbc_pagePanel.gridx = 0;
+		gbc_pagePanel.gridy = 0;
+		frame.getContentPane().add(pagePanel, gbc_pagePanel);
+		pagePanel.setLayout(new CardLayout(0, 0));
 		
 		intro = new JPanel();
-		panel.add(intro, "name_1209706530643200");
+		pagePanel.add(intro, "name_1209706530643200");
 		intro.setLayout(null);
 		intro.setVisible(true);
 		
@@ -119,7 +126,7 @@ public class GUI extends JFrame implements ActionListener {
 		intro.add(btnExistingStudent);
 		
 		newStudent = new JPanel();
-		panel.add(newStudent, "name_1209706541749900");
+		pagePanel.add(newStudent, "name_1209706541749900");
 		newStudent.setLayout(null);
 		newStudent.setVisible(false);
 		
@@ -160,7 +167,7 @@ public class GUI extends JFrame implements ActionListener {
 		newStudent.add(lblEnterTheFollowing);
 		
 		existingStudent = new JPanel();
-		panel.add(existingStudent, "name_1209706517892700");
+		pagePanel.add(existingStudent, "name_1209706517892700");
 		existingStudent.setLayout(null);
 		existingStudent.setVisible(false);
 		
@@ -188,24 +195,37 @@ public class GUI extends JFrame implements ActionListener {
 		
 		btnLogin = new JButton("Login");
 		btnLogin.addActionListener(this);
-		btnLogin.setBounds(129, 243, 141, 35);
+		btnLogin.setBounds(129, 243, 141, 75);
 		existingStudent.add(btnLogin);
 		
 		courseRegistration = new JPanel();
-		panel.add(courseRegistration, "name_1209706553262100");
+		pagePanel.add(courseRegistration, "name_1209706553262100");
 		courseRegistration.setLayout(null);
-		courseRegistration.setVisible(false);
 		
-		panel_1 = new JPanel();
-		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
-		gbc_panel_1.fill = GridBagConstraints.BOTH;
-		gbc_panel_1.gridx = 0;
-		gbc_panel_1.gridy = 1;
-		frame.getContentPane().add(panel_1, gbc_panel_1);
-		panel_1.setLayout(new BorderLayout(0, 0));
+		comboBox = new JComboBox(ClassList.courses);
+		comboBox.setBounds(21, 103, 381, 81);
+		courseRegistration.add(comboBox);
+		
+		btnAddCourse = new JButton("Add Course");
+		btnAddCourse.addActionListener(this);
+		btnAddCourse.setBounds(21, 221, 183, 35);
+		courseRegistration.add(btnAddCourse);
+		
+		btnRemoveCourse = new JButton("Remove Course");
+		btnRemoveCourse.addActionListener(this);
+		btnRemoveCourse.setBounds(225, 221, 177, 35);
+		courseRegistration.add(btnRemoveCourse);
+		
+		outputScrollPanel = new JPanel();
+		GridBagConstraints gbc_outputScrollPanel = new GridBagConstraints();
+		gbc_outputScrollPanel.fill = GridBagConstraints.BOTH;
+		gbc_outputScrollPanel.gridx = 0;
+		gbc_outputScrollPanel.gridy = 1;
+		frame.getContentPane().add(outputScrollPanel, gbc_outputScrollPanel);
+		outputScrollPanel.setLayout(new BorderLayout(0, 0));
 				
 		outputArea = new JTextArea();
-		panel_1.add(new JScrollPane(outputArea), BorderLayout.CENTER);
+		outputScrollPanel.add(new JScrollPane(outputArea), BorderLayout.CENTER);
 	}
 	
 	//action method to determine what buttons do what
@@ -232,7 +252,6 @@ public class GUI extends JFrame implements ActionListener {
 			clearConsole();
 		}
 		else if (nameOfCallingBtn.equals("Login")) {
-			//first find student
 			Student s = new Student();
 			s = sC.searchStudent(emailAddressTXTField.getText(), passwordTXTField.getText());
 			outputArea.append(s.toString());
@@ -240,11 +259,38 @@ public class GUI extends JFrame implements ActionListener {
 				btnLogin.setEnabled(false);
 	    		courseRegistration.setVisible(true);
 	    		existingStudent.setVisible(false);
+				s1 = s;
 			}
-			//***STILL NEED*** then remove student to allow changes
-			//***STILL NEED*** then re-add student to studentCollection
+		}
+		else if (nameOfCallingBtn.equals("Add Course")) {
+			clearConsole();
+			btnAddCourse.setEnabled(false);
+			btnRemoveCourse.setEnabled(false);
+			cC.add((Course) comboBox.getSelectedItem());
+			s1.setCourses(cC);
+			outputArea.append(s1.toString());
+			sC.add(s1);
+			appendStudents(sC);
+			courseRegOptions();
+		}
+		else if (nameOfCallingBtn.equals("Remove Course")) {
+			
 		}
 		
+	}
+	public void courseRegOptions() {
+    	String[] options = {"Yes", "Quit"};
+    	int optionsPane = JOptionPane.showOptionDialog(null,
+    	   		"Would You like to Register for More Courses?", "Thank You!",
+    	   			JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, 
+    	   				null, options, options[0]);
+    	if(optionsPane == 0) {
+			btnAddCourse.setEnabled(true);
+			btnRemoveCourse.setEnabled(true);
+    	}
+    	else {
+    		System.exit(0);
+    	}
 	}
 	
 	public void newEnrollOptions() {

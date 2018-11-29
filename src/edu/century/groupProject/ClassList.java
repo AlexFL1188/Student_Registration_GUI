@@ -16,4 +16,6 @@ public interface ClassList {
 	final Materials CSCI2061_Mat = new Materials("Fundamentals of Python");
 	public final Course CSCI2061 = new Course(001234, "CSCI", 2, 2081, 2, "Python For Programmers", "Robert Nienman", CSCI2061_Mat);
 	
+	Course [] courses = {ENGL1020, CSCI1081, CSCI2061};
+
 }

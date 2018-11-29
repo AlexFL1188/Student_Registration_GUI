@@ -58,7 +58,7 @@ public class StudentCollection implements Serializable {
 	 * if the student is found within the StudentCollection then its removed and the linklist is fixed
 	 * Throws:
 	 */
-	public void remove(Student target) {
+	public void removeStudent(Student target) {
 		if(numberOfStudents == 0)
 			return;
 		StudentNode cursor, precursor;
