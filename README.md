@@ -5,21 +5,31 @@ CSCI 2082 Group Project Information
 ---------------------------------------------------------------------------------------
 # Tasks To be Completed
 
-**- create gui ** *Completed by Alexander Reimer*
+**- create GUI** *Completed by Alexander Reimer*
+
+	-create the following pages: Intro, newStudent, existingStudent, courseRegistration *Completed by Alexander Reimer*
 
 **- implement Serializable** *Completed by Alexander Reimer*
 
-	**-create required methods** *Completed by Alexander Reimer*
+	-create required methods *Completed by Alexander Reimer*
+	-implement into code for successful operation *Completed by Alexander Reimer*
 	
 **- allow creation of new student with student ID, email, & password** *Completed by Alexander Reimer*
 
-	**-implement in GUI** *Completed by Alexander Reimer*
+	-create required method to create these items *Completed by Alexander Reimer*
+	-implement in GUI *Completed by Alexander Reimer*
 	
 **- allow student to look at different courses** *Completed by Alexander Reimer*
 
+	-implement a way of looking through course list in GUI *Completed by Alexander Reimer*
+
 **- allow student to login based on email and password** *Completed by Alexander Reimer*
 
+	-create methods to check login info with instance of student in studentCollection and redirect student in appropriate manner *Completed by Alexander Reimer*
+
 **- allow student to add courses to their course collection** *Completed by Alexander Reimer*
+
+	-create method to add selected course in GUI to the current student instances courseCollection *Completed by Alexander Reimer*
 
 **- allow student to remove course from their course collection**
 
