@@ -250,7 +250,7 @@ public class GUI extends JFrame implements ActionListener {
 			newStudent.setVisible(true);
 			intro.setVisible(false);
 			clearConsole();
-			outputArea.append("Welcome New Student!\nPlease fill in the boxes above and click register to continue");
+			outputArea.append("Welcome New Student!\nPlease fill in the boxes above and click Enroll to continue");
 		}
 		//action for button to choose if your are an Existing Student
 		else if(nameOfCallingBtn.equals("EXISTING STUDENT")) {
