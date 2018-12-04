@@ -42,10 +42,10 @@ CSCI 2082 Group Project Information
 
 	-create button in GUI for action
 
-**- allow student to get back TXT file of up-coming/registered courses** *Completed by Alexander Reimer*
+**- allow student to get back Word Document file of up-coming/registered courses** *Completed by Alexander Reimer*
 
 	-create button in GUI for action *Completed by Alexander Reimer*
-	-create method to output the current students info to a TXT file *Completed by Alexander Reimer*
+	-create method to output the current students info to a .doc file *Completed by Alexander Reimer*
 
 
 **- If course is full, allow student to add to wishlist**

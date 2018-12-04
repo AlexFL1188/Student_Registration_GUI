@@ -56,7 +56,7 @@ public class GUI extends JFrame implements ActionListener {
 	private JButton btnLogin;
 	private JButton btnAddCourse;
 	private JButton btnRemoveCourse;
-	private JButton btnGetTxtDocument;
+	private JButton btnGetWordDocument;
 	private StudentCollection sC = new StudentCollection();
 	private CourseCollection cC = new CourseCollection();
 	private Student s1 = new Student();
@@ -230,10 +230,10 @@ public class GUI extends JFrame implements ActionListener {
 		lblCourseRegistration.setBounds(21, 21, 381, 35);
 		courseRegistration.add(lblCourseRegistration);
 		
-		btnGetTxtDocument = new JButton("Get TXT Document");
-		btnGetTxtDocument.addActionListener(this);
-		btnGetTxtDocument.setBounds(21, 260, 381, 60);
-		courseRegistration.add(btnGetTxtDocument);
+		btnGetWordDocument = new JButton("Get Word Document");
+		btnGetWordDocument.addActionListener(this);
+		btnGetWordDocument.setBounds(21, 260, 381, 60);
+		courseRegistration.add(btnGetWordDocument);
 		
 		outputScrollPanel = new JPanel();
 		GridBagConstraints gbc_outputScrollPanel = new GridBagConstraints();
@@ -294,7 +294,7 @@ public class GUI extends JFrame implements ActionListener {
 		//action for button to add a course to a student
 		else if (nameOfCallingBtn.equals("Add Course")) {
 			clearConsole();
-			btnGetTxtDocument.setEnabled(true);
+			btnGetWordDocument.setEnabled(true);
 			btnAddCourse.setEnabled(false);
 			btnRemoveCourse.setEnabled(false);
 			Course course = (Course) comboBox.getSelectedItem();
@@ -307,7 +307,7 @@ public class GUI extends JFrame implements ActionListener {
 		//action for button to remove a course from a student
 		else if (nameOfCallingBtn.equals("Remove Course")) {
 			clearConsole();
-			btnGetTxtDocument.setEnabled(true);
+			btnGetWordDocument.setEnabled(true);
 			btnAddCourse.setEnabled(false);
 			btnRemoveCourse.setEnabled(false);
 			Course target = (Course) comboBox.getSelectedItem();
@@ -319,9 +319,9 @@ public class GUI extends JFrame implements ActionListener {
 			courseRegOptions();
 		}
 		//action for button to give user a txt file of their instance of Student
-		else if (nameOfCallingBtn.equals("Get TXT Document")) {
+		else if (nameOfCallingBtn.equals("Get Word Document")) {
 			JFileChooser fc = new JFileChooser();
-			FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Files", "*.txt", "text");
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("Word Document", "*.doc");
 			fc.setFileFilter(filter);
 			fc.setCurrentDirectory(new java.io.File("C:/Users"));
 			fc.setDialogTitle("Save Student Information");
@@ -330,11 +330,11 @@ public class GUI extends JFrame implements ActionListener {
 			if(result == JFileChooser.APPROVE_OPTION) {
 				File fi= fc.getSelectedFile();
 				try {
-					FileWriter fw = new FileWriter(fi.getPath()+".txt");
+					FileWriter fw = new FileWriter(fi.getPath()+".doc");
 					fw.write(s1.toString());
 					fw.flush();
 					fw.close();
-					btnGetTxtDocument.setEnabled(false);
+					btnGetWordDocument.setEnabled(false);
 				}catch(Exception e2) {
 					JOptionPane.showMessageDialog(null, e2.getMessage());
 				}
