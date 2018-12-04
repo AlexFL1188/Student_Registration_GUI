@@ -4,8 +4,10 @@ import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
@@ -27,7 +29,10 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import java.awt.Font;
 
 public class GUI extends JFrame implements ActionListener {
@@ -289,6 +294,7 @@ public class GUI extends JFrame implements ActionListener {
 		//action for button to add a course to a student
 		else if (nameOfCallingBtn.equals("Add Course")) {
 			clearConsole();
+			btnGetTxtDocument.setEnabled(true);
 			btnAddCourse.setEnabled(false);
 			btnRemoveCourse.setEnabled(false);
 			Course course = (Course) comboBox.getSelectedItem();
@@ -301,6 +307,7 @@ public class GUI extends JFrame implements ActionListener {
 		//action for button to remove a course from a student
 		else if (nameOfCallingBtn.equals("Remove Course")) {
 			clearConsole();
+			btnGetTxtDocument.setEnabled(true);
 			btnAddCourse.setEnabled(false);
 			btnRemoveCourse.setEnabled(false);
 			Course target = (Course) comboBox.getSelectedItem();
@@ -310,6 +317,28 @@ public class GUI extends JFrame implements ActionListener {
 			sC.add(s1);
 			appendStudents(sC);
 			courseRegOptions();
+		}
+		//action for button to give user a txt file of their instance of Student
+		else if (nameOfCallingBtn.equals("Get TXT Document")) {
+			JFileChooser fc = new JFileChooser();
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Files", "*.txt", "text");
+			fc.setFileFilter(filter);
+			fc.setCurrentDirectory(new java.io.File("C:/Users"));
+			fc.setDialogTitle("Save Student Information");
+			int result = fc.showSaveDialog(null);
+			fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			if(result == JFileChooser.APPROVE_OPTION) {
+				File fi= fc.getSelectedFile();
+				try {
+					FileWriter fw = new FileWriter(fi.getPath()+".txt");
+					fw.write(s1.toString());
+					fw.flush();
+					fw.close();
+					btnGetTxtDocument.setEnabled(false);
+				}catch(Exception e2) {
+					JOptionPane.showMessageDialog(null, e2.getMessage());
+				}
+			}
 		}
 	}
 	//void method to show and decide what the next options are after registering for a course
