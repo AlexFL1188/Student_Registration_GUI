@@ -63,7 +63,7 @@ public class GUI extends JFrame implements ActionListener {
 	private JPanel pagePanel;
 	private JPanel outputScrollPanel;
 	private JComboBox<?> comboBox;
-	private final JButton getClassMaterials = new JButton("Get Class Materials");
+	private final JButton getClassMaterials = new JButton("Show Class Materials");
 
 
 	/**
@@ -290,17 +290,19 @@ public class GUI extends JFrame implements ActionListener {
 		} 
 		//action for button to login
 		else if (nameOfCallingBtn.equals("Login")) {
-			clearConsole();
-			Student s = null;
+			Student s;
 			s = sC.searchStudent(emailAddressTXTField.getText(), passwordTXTField.getText());
-			outputArea.append(s.toString());
 			if(s != null) {
+				clearConsole();
+				outputArea.append(s.toString());
 				btnLogin.setEnabled(false);
 	    		courseRegistration.setVisible(true);
 	    		existingStudent.setVisible(false);
 				s1 = s;
 				cC = s.getCourses();
 				s1.setCourses(cC);
+			}else {
+				outputArea.append("\nNo such login Found!!");
 			}
 		}
 		//action for button to add a course to a student
