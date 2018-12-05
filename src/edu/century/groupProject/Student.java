@@ -179,5 +179,12 @@ public class Student implements Serializable{
 					+ password +"\n" + "\nCourses:\n" + courses + "\n";
 		return studentInfo;
 	}
+	
+	public String studentInfoToDoc() {
+		String studentInfo = "Full Name: " + firstName + " " + lastName + "\nBirth Date: " + 
+				birthMonth+"/"+birthDay+"/"+birthYear + "\nEmail: " + email +"\n" + "Password: " 
+					+ password +"\n" + "\nCourses:\n" + courses + "\n" + courses.getCourseMaterials();
+		return studentInfo;
+	}
 
 }

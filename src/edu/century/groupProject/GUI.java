@@ -235,6 +235,8 @@ public class GUI extends JFrame implements ActionListener {
 		btnGetWordDocument.addActionListener(this);
 		btnGetWordDocument.setBounds(21, 260, 183, 60);
 		courseRegistration.add(btnGetWordDocument);
+		
+	
 		getClassMaterials.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clearConsole();
@@ -341,7 +343,7 @@ public class GUI extends JFrame implements ActionListener {
 				File fi= fc.getSelectedFile();
 				try {
 					FileWriter fw = new FileWriter(fi.getPath()+".doc");
-					fw.write(s1.toString());
+					fw.write(s1.studentInfoToDoc());
 					fw.flush();
 					fw.close();
 					btnGetWordDocument.setEnabled(false);
