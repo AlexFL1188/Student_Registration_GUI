@@ -320,15 +320,20 @@ public class GUI extends JFrame implements ActionListener {
 		else if (nameOfCallingBtn.equals("Remove Course")) {
 			clearConsole();
 			btnGetWordDocument.setEnabled(true);
-			btnAddCourse.setEnabled(false);
-			btnRemoveCourse.setEnabled(false);
 			Course target = (Course) comboBox.getSelectedItem();
 			Course c1 = s1.courses.searchCourseNumber(target);
-			s1.courses.remove(c1);
-			outputArea.append(s1.toString());
-			sC.add(s1);
-			appendStudents(sC);
-			courseRegOptions();
+			if(c1 != null) {
+				btnAddCourse.setEnabled(false);
+				btnRemoveCourse.setEnabled(false);
+				s1.courses.remove(c1);
+				outputArea.append(s1.toString());
+				sC.add(s1);
+				appendStudents(sC);
+				courseRegOptions();
+			}else {
+				outputArea.append("You are not registered for selected course!!");
+			}
+			
 		}
 		//action for button to give user a txt file of their instance of Student
 		else if (nameOfCallingBtn.equals("Get Word Document")) {

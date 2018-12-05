@@ -40,7 +40,7 @@ CSCI 2082 Group Project Information
 
 **- allow student to see required materials for the courses they are registered** *Completed by Eric Thompson*
 
-	-create button in GUI for action
+	-create button in GUI for action *Completed by Eric Thompson*
 
 **- allow student to get back Word Document file of up-coming/registered courses** *Completed by Alexander Reimer*
 
