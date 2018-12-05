@@ -280,6 +280,7 @@ public class GUI extends JFrame implements ActionListener {
 			s1 = new Student(fullNameTXTField.getText(), birthDateTXTField.getText(), 
 					newPasswordTXTField.getText(), null);
 			s1.setCourses(cC);
+			outputArea.append("\nYour login Email is: " + s1.getEmail());
 			sC.add(s1);
 			appendStudents(sC);
 			btnEnroll.setEnabled(false);
