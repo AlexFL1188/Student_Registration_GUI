@@ -63,6 +63,7 @@ public class GUI extends JFrame implements ActionListener {
 	private JPanel pagePanel;
 	private JPanel outputScrollPanel;
 	private JComboBox<?> comboBox;
+	private final JButton getClassMaterials = new JButton("Get Class Materials");
 
 
 	/**
@@ -232,8 +233,16 @@ public class GUI extends JFrame implements ActionListener {
 		
 		btnGetWordDocument = new JButton("Get Word Document");
 		btnGetWordDocument.addActionListener(this);
-		btnGetWordDocument.setBounds(21, 260, 381, 60);
+		btnGetWordDocument.setBounds(21, 260, 183, 60);
 		courseRegistration.add(btnGetWordDocument);
+		getClassMaterials.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clearConsole();
+				outputArea.append(s1.getCourses().getCourseMaterials());
+			}
+		});
+		getClassMaterials.setBounds(225, 260, 177, 60);
+		courseRegistration.add(getClassMaterials);
 		
 		outputScrollPanel = new JPanel();
 		GridBagConstraints gbc_outputScrollPanel = new GridBagConstraints();

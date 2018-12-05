@@ -132,12 +132,30 @@ public class CourseCollection implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		
+		if(head == null) {
+			return "No Courses Registered";
+		}
 		CourseNode cursor = head;
 		String info = "Number of Courses Registered: " + numberOfCourses +"\n" + "Registered Courses: \n";
 		for (cursor = head; cursor != null; cursor = cursor.getLink()) {
 			info += cursor.getData() + "\n";
 		}
 		return info;
+	}
+	/**
+	 * description: returns string of course's materials 
+	 * @return String
+	 * 
+	 */
+	public String getCourseMaterials() { 
+		if(head == null) {
+			return "no classes regiestered";
+		}
+		CourseNode cursor = head;
+		String classMaterials = "Materials for Registered Courses: ";
+		for (cursor = head; cursor != null; cursor = cursor.getLink()) {
+			classMaterials += cursor.getData().getCourseTitle() + " " +cursor.getData().getMaterials() + "\n";
+		}
+		return classMaterials;
 	}
 }
