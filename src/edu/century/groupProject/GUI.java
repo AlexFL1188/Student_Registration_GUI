@@ -318,11 +318,11 @@ public class GUI extends JFrame implements ActionListener {
 		}
 		//action for button to remove a course from a student
 		else if (nameOfCallingBtn.equals("Remove Course")) {
-			clearConsole();
 			btnGetWordDocument.setEnabled(true);
 			Course target = (Course) comboBox.getSelectedItem();
 			Course c1 = s1.courses.searchCourseNumber(target);
 			if(c1 != null) {
+				clearConsole();
 				btnAddCourse.setEnabled(false);
 				btnRemoveCourse.setEnabled(false);
 				s1.courses.remove(c1);
@@ -331,7 +331,7 @@ public class GUI extends JFrame implements ActionListener {
 				appendStudents(sC);
 				courseRegOptions();
 			}else {
-				outputArea.append("You are not registered for selected course!!");
+				outputArea.append("You are not registered for selected course!!\n");
 			}
 			
 		}
