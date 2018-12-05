@@ -152,9 +152,9 @@ public class CourseCollection implements Serializable {
 			return "no classes regiestered";
 		}
 		CourseNode cursor = head;
-		String classMaterials = "Materials for Registered Courses: ";
+		String classMaterials = "Materials for Registered Courses:\n";
 		for (cursor = head; cursor != null; cursor = cursor.getLink()) {
-			classMaterials += cursor.getData().getCourseTitle() + " " +cursor.getData().getMaterials() + "\n";
+			classMaterials += cursor.getData().getCourseTitle() + "\n" +cursor.getData().getMaterials() + "\n";
 		}
 		return classMaterials;
 	}
