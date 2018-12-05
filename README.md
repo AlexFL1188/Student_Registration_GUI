@@ -23,7 +23,7 @@ CSCI 2082 Group Project Information
 
 	-implement a way of looking through course list in GUI *Completed by Alexander Reimer*
 
-**- allow student to login based on email and password** *Completed by Alexander Reimer*
+**- allow student to login based on email and password** *Completed by Alexander Reimer & Eric Thompson*
 
 	-create required buttons in GUI *Completed by Alexander Reimer*
 	-create methods to check login info with instance of student in studentCollection and redirect student in appropriate manner *Completed by Alexander Reimer*
@@ -38,7 +38,7 @@ CSCI 2082 Group Project Information
 	-create button in GUI for action *Completed by Alexander Reimer*
 	-create method to remove selected course from the current student instance courseCollection Object *Completed by Alexander Reimer & Eric Thompson*
 
-**- allow student to see required materials for the courses they are registered**
+**- allow student to see required materials for the courses they are registered** *Completed by Eric Thompson*
 
 	-create button in GUI for action
 
