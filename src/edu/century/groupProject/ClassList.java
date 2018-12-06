@@ -36,4 +36,5 @@ public interface ClassList {
 	
 	Course [] courses = {ANTH1022, ANTH1023, CSCI1081, CSCI2061, ENGL1020, ENGL1022, MATH1081, MATH1082, PHIL1031, PHIL1035};
 
+	
 }
