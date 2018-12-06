@@ -14,10 +14,11 @@ CSCI 2082 Group Project Information
 	-create required methods *Completed by Alexander Reimer*
 	-implement into code for successful operation *Completed by Alexander Reimer*
 	
-**- allow creation of new student with student ID, email, & password** *Completed by Alexander Reimer*
+**- allow creation of new student with student ID, email, & password** *Completed by Alexander Reimer & Eric Thompson*
 
 	-create required method to create these items *Completed by Alexander Reimer*
 	-implement in GUI *Completed by Alexander Reimer*
+	-display new student's email upon complete registration *Completed by Eric Thompson
 	
 **- allow student to look at different courses** *Completed by Alexander Reimer*
 
