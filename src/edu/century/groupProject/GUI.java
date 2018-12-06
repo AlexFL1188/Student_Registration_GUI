@@ -63,7 +63,7 @@ public class GUI extends JFrame implements ActionListener {
 	private JPanel pagePanel;
 	private JPanel outputScrollPanel;
 	private JComboBox<?> comboBox;
-	private final JButton getClassMaterials = new JButton("Show Class Materials");
+	private JButton btnGetClassMaterials; 
 
 
 	/**
@@ -236,15 +236,10 @@ public class GUI extends JFrame implements ActionListener {
 		btnGetWordDocument.setBounds(21, 260, 183, 60);
 		courseRegistration.add(btnGetWordDocument);
 		
-	
-		getClassMaterials.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				clearConsole();
-				outputArea.append(s1.getCourses().getCourseMaterials());
-			}
-		});
-		getClassMaterials.setBounds(225, 260, 177, 60);
-		courseRegistration.add(getClassMaterials);
+		btnGetClassMaterials = new JButton("Show Class Materials");
+		btnGetClassMaterials.addActionListener(this);
+		btnGetClassMaterials.setBounds(225, 260, 177, 60);
+		courseRegistration.add(btnGetClassMaterials);
 		
 		outputScrollPanel = new JPanel();
 		GridBagConstraints gbc_outputScrollPanel = new GridBagConstraints();
@@ -309,6 +304,7 @@ public class GUI extends JFrame implements ActionListener {
 		else if (nameOfCallingBtn.equals("Add Course")) {
 			clearConsole();
 			btnGetWordDocument.setEnabled(true);
+			btnGetClassMaterials.setEnabled(true);
 			btnAddCourse.setEnabled(false);
 			btnRemoveCourse.setEnabled(false);
 			Course course = (Course) comboBox.getSelectedItem();
@@ -327,6 +323,7 @@ public class GUI extends JFrame implements ActionListener {
 				clearConsole();
 				btnAddCourse.setEnabled(false);
 				btnRemoveCourse.setEnabled(false);
+				btnGetClassMaterials.setEnabled(true);
 				s1.courses.remove(c1);
 				outputArea.append(s1.toString());
 				sC.add(s1);
@@ -359,7 +356,12 @@ public class GUI extends JFrame implements ActionListener {
 				}
 			}
 		}
+		else if(nameOfCallingBtn.equals("Show Class Materials")) {
+				outputArea.append(s1.getCourses().getCourseMaterials());
+				btnGetClassMaterials.setEnabled(false);
+		}
 	}
+	
 	//void method to show and decide what the next options are after registering for a course
 	public void courseRegOptions() {
     	String[] options = {"Yes", "Quit"};

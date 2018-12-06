@@ -149,7 +149,7 @@ public class CourseCollection implements Serializable {
 	 */
 	public String getCourseMaterials() { 
 		if(head == null) {
-			return "no classes regiestered";
+			return "You are not registered for any Classes!!\n";
 		}
 		CourseNode cursor = head;
 		String classMaterials = "Materials for Registered Courses:\n";
