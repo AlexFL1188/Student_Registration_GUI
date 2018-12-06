@@ -265,7 +265,7 @@ public class GUI extends JFrame implements ActionListener {
 			newStudent.setVisible(true);
 			intro.setVisible(false);
 			clearConsole();
-			outputArea.append("Welcome New Student!\nPlease fill in the boxes above and click Enroll to continue");
+			outputArea.append("Welcome New Student!\nPlease fill in the boxes above and click Enroll to continue\n");
 		}
 		//action for button to choose if your are an Existing Student
 		else if(nameOfCallingBtn.equals("EXISTING STUDENT")) {
@@ -276,17 +276,18 @@ public class GUI extends JFrame implements ActionListener {
 		}
 		//action for button to enroll new student
 		else if(nameOfCallingBtn.equals("Enroll")) {
-			clearConsole();
-			outputArea.append("Thank you for your Registration!!");
 			s1 = new Student(fullNameTXTField.getText(), birthDateTXTField.getText(), 
 					newPasswordTXTField.getText(), null);
+			clearConsole();
+			outputArea.append("Thank you for your Registration!!");
 			s1.setCourses(cC);
-			outputArea.append("\nYour login Email is: " + s1.getEmail());
+			outputArea.append("\nYour login Email is: " + s1.getEmail() + "\n");
 			sC.add(s1);
 			appendStudents(sC);
 			btnEnroll.setEnabled(false);
-			newEnrollOptions();
-		} 
+			newEnrollOptions();	
+		}
+		
 		//action for button to login
 		else if (nameOfCallingBtn.equals("Login")) {
 			Student s;
