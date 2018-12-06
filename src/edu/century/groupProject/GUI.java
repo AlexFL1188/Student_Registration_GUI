@@ -46,25 +46,28 @@ public class GUI extends JFrame implements ActionListener {
 	private JPanel existingStudent;
 	private JPanel intro;
 	private JPanel courseRegistration;
+	private JPanel pagePanel;
+	private JPanel outputScrollPanel;
+	
 	private JTextField fullNameTXTField;
 	private JTextField birthDateTXTField;
 	private JTextField newPasswordTXTField;
 	private JTextField emailAddressTXTField;
 	private JTextField passwordTXTField;
+	
 	private JTextArea outputArea;
+	
 	private JButton btnEnroll;
 	private JButton btnLogin;
 	private JButton btnAddCourse;
 	private JButton btnRemoveCourse;
 	private JButton btnGetWordDocument;
+	private JButton btnGetClassMaterials; 
+	private JComboBox<?> comboBox;
+	
+	private Student s1 = new Student();
 	private StudentCollection sC = new StudentCollection();
 	private CourseCollection cC = new CourseCollection();
-	private Student s1 = new Student();
-	private JPanel pagePanel;
-	private JPanel outputScrollPanel;
-	private JComboBox<?> comboBox;
-	private JButton btnGetClassMaterials; 
-
 
 	/**
 	 * Launch the application.
