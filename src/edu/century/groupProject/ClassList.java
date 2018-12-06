@@ -16,13 +16,31 @@ public interface ClassList {
 	final Materials CSCI2061_Mat = new Materials("Fundamentals of Python");
 	public final Course CSCI2061 = new Course("CSCI", 2, 2081, 2, "Python For Programmers", "Robert Nienman", CSCI2061_Mat);
 	
-	final Materials PHYS1081_Mat = new Materials("Physics for Scientist and Engienerrs", "LabBook", true);
-	public final Course PHYS1081 = new Course("PHYS", 4, 1081, 1, "Physics", "Bob Klindwroth", PHYS1081_Mat);
+	final Materials ENGL1020_Mat = new Materials("None Required");
+	public final Course ENGL1020 = new Course("ENGL", 3, 1020, 3, "Composistion 1", "Angela Coffee", ENGL1020_Mat);
 	
-	final Materials MATH1081_Mat = new Materials("Intro: Calculus");
-	public final Course MATH1081 = new Course("Math", 4, 1081, 1, "Calculus 1", "Greg Rosik", MATH1081_Mat);
+	final Materials ENGL1022_Mat = new Materials("The Golden Compass");
+	public final Course ENGL1022 = new Course("ENGL", 3, 1022, 1, "Composistion 2", "Melanie Richards", ENGL1022_Mat);
 	
-	Course [] courses = {ENGL1020, CSCI1081, CSCI2061, PHYS1081, MATH1081};
+	final Materials MATH1081_Mat = new Materials("Calculus");
+	public final Course MATH1081 = new Course("MATH", 5, 1081, 1, "Single Variable Calculus", "Angelia Simions", MATH1081_Mat);
+	
+	final Materials MATH1082_Mat = new Materials("Calculus II");
+	public final Course MATH1082 = new Course("MATH", 5, 1082, 3, "Single Variable Calculus II", "Mark Lorken", MATH1082_Mat);
+	
+	final Materials PHIL1031_Mat = new Materials("Ethics");
+	public final Course PHIL1031 = new Course("PHIL", 3, 1031, 1, "Ehtics", "Ida Baltikauskas", PHIL1031_Mat);
+	
+	final Materials PHIL1035_Mat = new Materials("Ethics HandBook");
+	public final Course PHIL1035 = new Course("PHIL", 3, 1035, 4, "Biomedical Ethics", "Carl Chung", PHIL1035_Mat);
+
+	final Materials PHYS1081_Mat = new Materials("Physics for Scientiest and Engieeners I", "Phys lab book", true);
+	public final Course PHYS1081 = new Course("PHYS", 4, 1081, 1, "Physics I", "Bob Klinfworth", PHYS1081_Mat);
+	
+	final Materials PHYS1082_Mat = new Materials("Physics for Scientiest and Engieeners II", "Phys lab book", true);	
+	public final Course PHYS1082 = new Course("PHYS", 4, 1082, 2, "Physics II", "David Mekela", PHYS1082_Mat);
+	
+	Course [] courses = {ANTH1022, ANTH1023, CSCI1081, CSCI2061, ENGL1020, ENGL1022, MATH1081, MATH1082, PHIL1031, PHIL1035, PHYS1081, PHYS1082};
 
 	
 }
