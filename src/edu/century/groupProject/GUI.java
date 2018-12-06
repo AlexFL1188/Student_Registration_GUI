@@ -46,25 +46,28 @@ public class GUI extends JFrame implements ActionListener {
 	private JPanel existingStudent;
 	private JPanel intro;
 	private JPanel courseRegistration;
+	private JPanel pagePanel;
+	private JPanel outputScrollPanel;
+	
 	private JTextField fullNameTXTField;
 	private JTextField birthDateTXTField;
 	private JTextField newPasswordTXTField;
 	private JTextField emailAddressTXTField;
 	private JTextField passwordTXTField;
+	
 	private JTextArea outputArea;
+	
 	private JButton btnEnroll;
 	private JButton btnLogin;
 	private JButton btnAddCourse;
 	private JButton btnRemoveCourse;
 	private JButton btnGetWordDocument;
+	private JButton btnGetClassMaterials; 
+	private JComboBox<?> comboBox;
+	
+	private Student s1 = new Student();
 	private StudentCollection sC = new StudentCollection();
 	private CourseCollection cC = new CourseCollection();
-	private Student s1 = new Student();
-	private JPanel pagePanel;
-	private JPanel outputScrollPanel;
-	private JComboBox<?> comboBox;
-	private final JButton getClassMaterials = new JButton("Get Class Materials");
-
 
 	/**
 	 * Launch the application.
@@ -235,14 +238,11 @@ public class GUI extends JFrame implements ActionListener {
 		btnGetWordDocument.addActionListener(this);
 		btnGetWordDocument.setBounds(21, 260, 183, 60);
 		courseRegistration.add(btnGetWordDocument);
-		getClassMaterials.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				clearConsole();
-				outputArea.append(s1.getCourses().getCourseMaterials());
-			}
-		});
-		getClassMaterials.setBounds(225, 260, 177, 60);
-		courseRegistration.add(getClassMaterials);
+		
+		btnGetClassMaterials = new JButton("Show Class Materials");
+		btnGetClassMaterials.addActionListener(this);
+		btnGetClassMaterials.setBounds(225, 260, 177, 60);
+		courseRegistration.add(btnGetClassMaterials);
 		
 		outputScrollPanel = new JPanel();
 		GridBagConstraints gbc_outputScrollPanel = new GridBagConstraints();
@@ -253,6 +253,7 @@ public class GUI extends JFrame implements ActionListener {
 		outputScrollPanel.setLayout(new BorderLayout(0, 0));
 				
 		outputArea = new JTextArea();
+		outputArea.setEditable(false);
 		outputScrollPanel.add(new JScrollPane(outputArea), BorderLayout.CENTER);
 	}
 	
@@ -264,7 +265,7 @@ public class GUI extends JFrame implements ActionListener {
 			newStudent.setVisible(true);
 			intro.setVisible(false);
 			clearConsole();
-			outputArea.append("Welcome New Student!\nPlease fill in the boxes above and click Enroll to continue");
+			outputArea.append("Welcome New Student!\nPlease fill in the boxes above and click Enroll to continue\n");
 		}
 		//action for button to choose if your are an Existing Student
 		else if(nameOfCallingBtn.equals("EXISTING STUDENT")) {
@@ -275,36 +276,40 @@ public class GUI extends JFrame implements ActionListener {
 		}
 		//action for button to enroll new student
 		else if(nameOfCallingBtn.equals("Enroll")) {
-			clearConsole();
-			outputArea.append("Thank you for your Registration!!");
 			s1 = new Student(fullNameTXTField.getText(), birthDateTXTField.getText(), 
 					newPasswordTXTField.getText(), null);
+			clearConsole();
+			outputArea.append("Thank you for your Registration!!");
 			s1.setCourses(cC);
-			outputArea.append("\nYour login Email is: " + s1.getEmail());
+			outputArea.append("\nYour login Email is: " + s1.getEmail() + "\n");
 			sC.add(s1);
 			appendStudents(sC);
 			btnEnroll.setEnabled(false);
-			newEnrollOptions();
-		} 
+			newEnrollOptions();	
+		}
+		
 		//action for button to login
 		else if (nameOfCallingBtn.equals("Login")) {
-			clearConsole();
-			Student s = null;
+			Student s;
 			s = sC.searchStudent(emailAddressTXTField.getText(), passwordTXTField.getText());
-			outputArea.append(s.toString());
 			if(s != null) {
+				clearConsole();
+				outputArea.append(s.toString());
 				btnLogin.setEnabled(false);
 	    		courseRegistration.setVisible(true);
 	    		existingStudent.setVisible(false);
 				s1 = s;
 				cC = s.getCourses();
 				s1.setCourses(cC);
+			}else {
+				outputArea.append("\nNo such login Found!!");
 			}
 		}
 		//action for button to add a course to a student
 		else if (nameOfCallingBtn.equals("Add Course")) {
 			clearConsole();
 			btnGetWordDocument.setEnabled(true);
+			btnGetClassMaterials.setEnabled(true);
 			btnAddCourse.setEnabled(false);
 			btnRemoveCourse.setEnabled(false);
 			Course course = (Course) comboBox.getSelectedItem();
@@ -316,17 +321,23 @@ public class GUI extends JFrame implements ActionListener {
 		}
 		//action for button to remove a course from a student
 		else if (nameOfCallingBtn.equals("Remove Course")) {
-			clearConsole();
 			btnGetWordDocument.setEnabled(true);
-			btnAddCourse.setEnabled(false);
-			btnRemoveCourse.setEnabled(false);
 			Course target = (Course) comboBox.getSelectedItem();
 			Course c1 = s1.courses.searchCourseNumber(target);
-			s1.courses.remove(c1);
-			outputArea.append(s1.toString());
-			sC.add(s1);
-			appendStudents(sC);
-			courseRegOptions();
+			if(c1 != null) {
+				clearConsole();
+				btnAddCourse.setEnabled(false);
+				btnRemoveCourse.setEnabled(false);
+				btnGetClassMaterials.setEnabled(true);
+				s1.courses.remove(c1);
+				outputArea.append(s1.toString());
+				sC.add(s1);
+				appendStudents(sC);
+				courseRegOptions();
+			}else {
+				outputArea.append("You are not registered for selected course!!\n");
+			}
+			
 		}
 		//action for button to give user a txt file of their instance of Student
 		else if (nameOfCallingBtn.equals("Get Word Document")) {
@@ -341,7 +352,11 @@ public class GUI extends JFrame implements ActionListener {
 				File fi= fc.getSelectedFile();
 				try {
 					FileWriter fw = new FileWriter(fi.getPath()+".doc");
+<<<<<<< HEAD
 					fw.write(s1.toString() + "\n" + s1.getCourses().getCourseMaterials());
+=======
+					fw.write(s1.studentInfoToDoc());
+>>>>>>> branch 'master' of https://github.com/AlexFL1188/Student_Registration_GUI
 					fw.flush();
 					fw.close();
 					btnGetWordDocument.setEnabled(false);
@@ -350,7 +365,12 @@ public class GUI extends JFrame implements ActionListener {
 				}
 			}
 		}
+		else if(nameOfCallingBtn.equals("Show Class Materials")) {
+				outputArea.append(s1.getCourses().getCourseMaterials());
+				btnGetClassMaterials.setEnabled(false);
+		}
 	}
+	
 	//void method to show and decide what the next options are after registering for a course
 	public void courseRegOptions() {
     	String[] options = {"Yes", "Quit"};

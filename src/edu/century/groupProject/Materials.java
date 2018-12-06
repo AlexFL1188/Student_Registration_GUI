@@ -76,10 +76,10 @@ public class Materials implements Serializable {
 	public String toString() {
 
 		if (needLab) {
-			return "Class materials : \nTextbooks : " + getTextBooks() + "\nEquipment: " + getEquipment()
+			return "\tTextbooks : " + getTextBooks() + "\n\tEquipment: " + getEquipment()
 					+ "\nThis Class requires a Lab, you will need to signup for the Lab and the Lab book";
 		} else {
-			return "Class materials : \nTextbooks : " + getTextBooks() + "\nEquipment: " + getEquipment();
+			return "\tTextbooks : " + getTextBooks() + "\n\tEquipment: " + getEquipment();
 		}
 	}
 }

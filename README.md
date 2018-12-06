@@ -14,10 +14,11 @@ CSCI 2082 Group Project Information
 	-create required methods *Completed by Alexander Reimer*
 	-implement into code for successful operation *Completed by Alexander Reimer*
 	
-**- allow creation of new student with student ID, email, & password** *Completed by Alexander Reimer*
+**- allow creation of new student with student ID, email, & password** *Completed by Alexander Reimer & Eric Thompson*
 
 	-create required method to create these items *Completed by Alexander Reimer*
 	-implement in GUI *Completed by Alexander Reimer*
+	-display new student's email upon complete registration *Completed by Eric Thompson
 	
 **- allow student to look at different courses** *Completed by Alexander Reimer*
 
@@ -38,9 +39,9 @@ CSCI 2082 Group Project Information
 	-create button in GUI for action *Completed by Alexander Reimer*
 	-create method to remove selected course from the current student instance courseCollection Object *Completed by Alexander Reimer & Eric Thompson*
 
-**- allow student to see required materials for the courses they are registered**
+**- allow student to see required materials for the courses they are registered** *Completed by Eric Thompson*
 
-	-create button in GUI for action
+	-create button in GUI for action *Completed by Eric Thompson*
 
 **- allow student to get back Word Document file of up-coming/registered courses** *Completed by Alexander Reimer*
 

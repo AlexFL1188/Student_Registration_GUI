@@ -2,13 +2,13 @@ package edu.century.groupProject;
 /**
  * This is a static list of classes used to populate
  * the list
- * 
- * @author Eric Thompson
- *
  */
 public interface ClassList {
-	final Materials ENGL1020_Mat = new Materials("The Golden Compass");
-	public final Course ENGL1020 = new Course("ENGL", 4, 1020, 1, "Composistion 1", "Melanie Richards", ENGL1020_Mat);
+	final Materials ANTH1022_Mat = new Materials("None Required");
+	public final Course ANTH1022 = new Course("ANTH", 3, 1022, 2, "Introduction to Physical Anthropology", "Paul Roach", ANTH1022_Mat);
+	
+	final Materials ANTH1023_Mat = new Materials("None Required");
+	public final Course ANTH1023 = new Course("ANTH", 3, 1023, 3, "Introduction to Cultural Anthropology", "Paul Roach", ANTH1023_Mat);
 	
 	final Materials CSCI1081_Mat = new Materials("Intro to Programing");
 	public final Course CSCI1081 = new Course("CSCI", 4, 1081, 1, "Introduction to Programming", "Zak Banni", CSCI1081_Mat);
