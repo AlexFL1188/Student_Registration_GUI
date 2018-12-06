@@ -250,6 +250,7 @@ public class GUI extends JFrame implements ActionListener {
 		outputScrollPanel.setLayout(new BorderLayout(0, 0));
 				
 		outputArea = new JTextArea();
+		outputArea.setEditable(false);
 		outputScrollPanel.add(new JScrollPane(outputArea), BorderLayout.CENTER);
 	}
 	
