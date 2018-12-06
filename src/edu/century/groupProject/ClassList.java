@@ -16,6 +16,12 @@ public interface ClassList {
 	final Materials CSCI2061_Mat = new Materials("Fundamentals of Python");
 	public final Course CSCI2061 = new Course("CSCI", 2, 2081, 2, "Python For Programmers", "Robert Nienman", CSCI2061_Mat);
 	
-	Course [] courses = {ENGL1020, CSCI1081, CSCI2061};
+	final Materials PHYS1081_Mat = new Materials("Physics for Scientist and Engienerrs", "LabBook", true);
+	public final Course PHYS1081 = new Course("PHYS", 4, 1081, 1, "Physics", "Bob Klindwroth", PHYS1081_Mat);
+	
+	final Materials MATH1081_Mat = new Materials("Intro: Calculus");
+	public final Course MATH1081 = new Course("Math", 4, 1081, 1, "Calculus 1", "Greg Rosik", MATH1081_Mat);
+	
+	Course [] courses = {ENGL1020, CSCI1081, CSCI2061, PHYS1081, MATH1081};
 
 }

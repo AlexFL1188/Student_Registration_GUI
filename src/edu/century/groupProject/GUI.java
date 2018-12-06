@@ -341,7 +341,7 @@ public class GUI extends JFrame implements ActionListener {
 				File fi= fc.getSelectedFile();
 				try {
 					FileWriter fw = new FileWriter(fi.getPath()+".doc");
-					fw.write(s1.toString());
+					fw.write(s1.toString() + "\n" + s1.getCourses().getCourseMaterials());
 					fw.flush();
 					fw.close();
 					btnGetWordDocument.setEnabled(false);
