@@ -36,7 +36,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.Font;
 
 public class GUI extends JFrame implements ActionListener {
-
 	/**
 	 * 
 	 */

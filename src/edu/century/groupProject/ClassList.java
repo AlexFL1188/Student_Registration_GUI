@@ -24,4 +24,5 @@ public interface ClassList {
 	
 	Course [] courses = {ENGL1020, CSCI1081, CSCI2061, PHYS1081, MATH1081};
 
+	
 }
