@@ -351,11 +351,7 @@ public class GUI extends JFrame implements ActionListener {
 				File fi= fc.getSelectedFile();
 				try {
 					FileWriter fw = new FileWriter(fi.getPath()+".doc");
-<<<<<<< HEAD
-					fw.write(s1.toString() + "\n" + s1.getCourses().getCourseMaterials());
-=======
 					fw.write(s1.studentInfoToDoc());
->>>>>>> branch 'master' of https://github.com/AlexFL1188/Student_Registration_GUI
 					fw.flush();
 					fw.close();
 					btnGetWordDocument.setEnabled(false);
