@@ -132,7 +132,7 @@ public class CourseCollection implements Serializable {
 
 	public String wishListToString() {
 		if (head == null) {
-			return "No Courses in wish list\n";
+			return "No Courses in Wish List\n";
 		}
 		CourseNode cursor = head;
 		String info = "Number in Wish list: " + numberOfCourses + "\n" + "Saved Courses: \n";
