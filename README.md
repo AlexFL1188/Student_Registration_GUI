@@ -48,11 +48,11 @@ CSCI 2082 Group Project Information
 	-create button in GUI for action *Completed by Alexander Reimer*
 	-create method to output the current students info to a .doc file *Completed by Alexander Reimer*
 
-
 **- If course is full, allow student to add to wishlist** *Completed by Eric Thompson*
 
-	-create methods to handle if course is full
-	-create wishlist instance in student
+	-create methods to handle if course is full *Completed by Eric Thompson*
+	-create wishlist instance in student *Completed by Eric Thompson*
+	-create button in GUI to display wishlist *Completed by Eric Thompson*
 
 ---------------------------------------------------------------------------------------
 # Steps/Time Line
