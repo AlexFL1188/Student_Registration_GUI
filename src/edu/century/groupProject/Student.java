@@ -2,15 +2,14 @@ package edu.century.groupProject;
 
 import java.io.Serializable;
 
-
 import edu.century.groupProject.collections.CourseCollection;
 
-public class Student implements Serializable{
+public class Student implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//creating instances of a student object
+	// creating instances of a student object
 	private String studentId;
 	private String firstName;
 	private String lastName;
@@ -21,14 +20,11 @@ public class Student implements Serializable{
 	private String birthDay;
 	private String birthYear;
 	public CourseCollection courses;
+	public CourseCollection wishList;
+
 	/**
-	 * description:
-	 * null constructor
-	 * Precondition:
-	 * takes no arguments
-	 * Postcondition:
-	 * assigns all the values of a student object to null
-	 * Throws:
+	 * description: null constructor Precondition: takes no arguments Postcondition:
+	 * assigns all the values of a student object to null Throws:
 	 */
 	public Student() {
 		this.studentId = null;
@@ -38,29 +34,30 @@ public class Student implements Serializable{
 		this.birthDate = null;
 		this.password = null;
 		this.courses = null;
+		this.wishList = null;
 	}
+
 	/**
-	 * description:
-	 * two argument constructor designed to create a fullname and birthdate of a student object
-	 * Precondition:
-	 * takes in a fullname and birthdate of type gregorian calendar
-	 * Postcondition:
-	 * assigns and mutates values required to create the correct info for a required student object
-	 * Throws:
+	 * description: two argument constructor designed to create a fullname and
+	 * birthdate of a student object Precondition: takes in a fullname and birthdate
+	 * of type gregorian calendar Postcondition: assigns and mutates values required
+	 * to create the correct info for a required student object Throws:
 	 */
-	public Student(String fullName, String birthDate, String password, CourseCollection courses) {
+	public Student(String fullName, String birthDate, String password, CourseCollection courses,
+			CourseCollection wishlist) {
 		String[] name = fullName.split(" ");
 		this.firstName = name[0];
 		this.lastName = name[1];
 		String firstInitials = name[0].substring(0, 2);
 		String lastInitials = name[1].substring(0, 2);
 		getBirthDateInfo(birthDate);
-		this.email = firstInitials + birthYear + lastInitials +"@my.century.edu";
+		this.email = firstInitials + birthYear + lastInitials + "@my.century.edu";
 		this.studentId = firstInitials + birthYear + lastInitials;
 		this.password = password;
 		this.courses = courses;
+		this.wishList = wishlist;
 	}
-	
+
 	public void getBirthDateInfo(String birthDate) {
 		String[] birth = birthDate.split("/");
 		this.birthMonth = birth[0];
@@ -70,12 +67,10 @@ public class Student implements Serializable{
 	}
 
 	/**
-	 * description:
-	 * below are getters and setter required for getting and setting values associated
-	 * Precondition:
-	 * getters take in no arguments, and setters take in appropriate values to set
-	 * Postcondition:
-	 * getters return the value requested, and setters return nothing but have set the appropriate values
+	 * description: below are getters and setter required for getting and setting
+	 * values associated Precondition: getters take in no arguments, and setters
+	 * take in appropriate values to set Postcondition: getters return the value
+	 * requested, and setters return nothing but have set the appropriate values
 	 * Throws:
 	 */
 	public String getStudentId() {
@@ -85,11 +80,11 @@ public class Student implements Serializable{
 	public void setStudentId(String studentId) {
 		this.studentId = studentId;
 	}
-	
+
 	public String getBirthDate() {
 		return birthDate;
 	}
-	
+
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
@@ -117,78 +112,76 @@ public class Student implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public CourseCollection getCourses() {
 		return courses;
 	}
-	
+
 	public void setCourses(CourseCollection courses) {
 		this.courses = courses;
 	}
+
+	public void setWishList(CourseCollection courses) {
+		this.wishList = courses;
+	}
+
+	public CourseCollection getWishList() {
+		return this.wishList;
+	}
+
 	/**
-	 * description:
-	 * clone method designed to create another pointer to the same object
-	 * Precondition:
-	 * takes in no arguments
-	 * Postcondition:
-	 * returns another pointer of type student
-	 * Throws:
+	 * description: clone method designed to create another pointer to the same
+	 * object Precondition: takes in no arguments Postcondition: returns another
+	 * pointer of type student Throws:
 	 */
 	public Student clone() {
 		Student studentClone;
 		try {
-			studentClone = (Student)super.clone();
-		}catch (CloneNotSupportedException e) {
+			studentClone = (Student) super.clone();
+		} catch (CloneNotSupportedException e) {
 			throw new RuntimeException("This Class doesnt Implement Cloneable");
 		}
 		return studentClone;
 	}
+
 	/**
-	 * description:
-	 * default equals method designed to compare two objects and see if equal
-	 * Precondition:
-	 * takes in an object or Student and compares it 
-	 * Postcondition:
-	 * see if its equal to another object
-	 * Throws:
+	 * description: default equals method designed to compare two objects and see if
+	 * equal Precondition: takes in an object or Student and compares it
+	 * Postcondition: see if its equal to another object Throws:
 	 */
 	public boolean equals(Student student) {
-		if(this.getFirstName() == student.getFirstName() && this.getLastName() == student.getLastName() 
-				&& this.getBirthDate() == student.getBirthDate()){
+		if (this.getFirstName() == student.getFirstName() && this.getLastName() == student.getLastName()
+				&& this.getBirthDate() == student.getBirthDate()) {
 			return true;
 		}
 		return false;
 	}
+
 	/**
-	 * description:
-	 * toString method designed to convert instances and values to string values
-	 * Precondition:
-	 * takes in no values
-	 * Postcondition:
-	 * returns all values inside converted to a string
-	 * Throws:
+	 * description: toString method designed to convert instances and values to
+	 * string values Precondition: takes in no values Postcondition: returns all
+	 * values inside converted to a string Throws:
 	 */
 	@Override
 	public String toString() {
-		String studentInfo = "Full Name: " + firstName + " " + lastName + "\nBirth Date: " + 
-				birthMonth+"/"+birthDay+"/"+birthYear + "\nEmail: " + email +"\n" + "Password: " 
-					+ password +"\n" + "\nCourses:\n" + courses + "\n";
-		return studentInfo;
-	}
-	
-	public String studentInfoToDoc() {
-		String studentInfo = "Full Name: " + firstName + " " + lastName + "\nBirth Date: " + 
-				birthMonth+"/"+birthDay+"/"+birthYear + "\nEmail: " + email +"\n" + "Password: " 
-					+ password +"\n" + "\nCourses:\n" + courses + "\n" + courses.getCourseMaterials();
+		String studentInfo = "Full Name: " + firstName + " " + lastName + "\nBirth Date: " + birthMonth + "/" + birthDay
+				+ "/" + birthYear + "\nEmail: " + email + "\n" + "Password: " + password + "\n" + "\nCourses:\n"
+				+ courses + "\n";
 		return studentInfo;
 	}
 
+	public String studentInfoToDoc() {
+		String studentInfo = "Full Name: " + firstName + " " + lastName + "\nBirth Date: " + birthMonth + "/" + birthDay
+				+ "/" + birthYear + "\nEmail: " + email + "\n" + "Password: " + password + "\n" + "\nCourses:\n"
+				+ courses + "\n" + courses.getCourseMaterials() + "\nWish List:" + wishList;
+		return studentInfo;
+	}
 }
