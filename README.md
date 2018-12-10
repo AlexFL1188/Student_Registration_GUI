@@ -49,7 +49,7 @@ CSCI 2082 Group Project Information
 	-create method to output the current students info to a .doc file *Completed by Alexander Reimer*
 
 
-**- If course is full, allow student to add to wishlist**
+**- If course is full, allow student to add to wishlist** *Completed by Eric Thompson*
 
 	-create methods to handle if course is full
 	-create wishlist instance in student
